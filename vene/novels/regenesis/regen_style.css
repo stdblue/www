@@ -1,0 +1,102 @@
+﻿body
+{
+	margin-right: 5%;
+	margin-left: 10%;
+	font-family: Verdana, Osaka, Arial, monospace;
+	font-size: 12px;
+}
+
+h3
+{
+	color: #555555;
+	font-family: "Century Gothic", Arial, sans-serif;
+    font-size: small;
+    padding:1px 25px;
+    border-bottom: 1px dashed #000;
+}
+
+h4
+{
+	font-family: Verdana, Arial, sans-serif;
+    font-size:12px;
+    padding:1px 25px;
+}
+
+#titlehead
+{
+	color: #555555;
+	font-family: "Century Gothic", Arial, sans-serif;
+	font-size: 18pt;
+}
+
+#toc
+{
+	position : fixed;
+	width : 200px;
+	top: 80px;
+	font-family: "Lucida Console", Verdana, monospace;
+	font-size: small;
+	line-height: 1.4;
+	text-align: right;
+}
+
+#textarea
+{
+	position:absolute;
+	top: 45px;
+	width: 70%;
+	margin-left: 220px;
+    border-top: 1px dashed #000;
+}
+
+.separator
+{
+	visibility: hidden;
+}
+
+.lastletter
+{
+	text-align: right;
+	font-size: x-small;
+	font-family: Gulim, "ＭＳ Ｐゴシック", Osaka, Century, sans-serif;
+}
+
+.footer
+{
+	text-align: right;
+	font-size: x-small;
+	font-family: Verdana, Osaka, Arial, monospace;
+}
+
+#monologue
+{
+	text-align: center;
+	font-family: "ＭＳ 明朝", "平成明朝", Helvetica, serif;
+	font-size: 10pt;
+	line-height: 1.6;
+}
+
+a
+{
+	color: blue;
+	text-decoration: none;
+}
+
+a:active
+{
+	text-decoration: none;
+	color: blue;
+}
+
+a:visited
+{
+	text-decoration: none;
+	color: blue;
+}
+
+a:hover
+{
+	text-decoration: none;
+	color: blue;
+	background-color: #e0e0e0;
+}

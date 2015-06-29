@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"DTD/xhtml1-strict.dtd">
+
+<?xml-stylesheet href="/vene/css/illuminated.css" type="text/css" ?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+
+<head>
+	<title>啓発済み ： ClickOnce</title>
+
+	<!-- スタイルシート指定 -->
+	<link href="/vene/css/illuminated.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+
+#index
+{
+	position: absolute;
+	left: 20px; top: 80px;
+	width: 120px;
+	border: 1px none #8888f8;
+    border-top: 1px solid #8888f8;
+    border-left: 1px solid #8888f8;
+    border-right: 2px solid #666699;
+    border-bottom: 2px solid #666699;
+    padding: 5px 3px 3px 0.5em;
+}
+
+#docview
+{
+	position: absolute;
+	left: 150px; top: 80px;
+}
+
+pre
+{
+	border: 1px solid gray;
+	padding: 4px;
+}
+
+</style>
+
+</head>
+
+<body bgcolor="#ffffff" text="black" >
+<br />
+<h2>C++/CLI とクリック・ワンス</h2>
+<br />
+<div id="index">
+<div class="title" title="C++/CLI の紹介です"><a href="cpp_cli.html">電波襲来篇</a></div>
+<div class="title" title="C++/CLI の基本紹介です">基本解説篇</div>
+<div class="title" title="C++/CLI の機能紹介です"><a href="cpp_cli_bases.html">機能解説篇</a></div>
+<div class="title" title="C++/CLI の用語紹介です">用語集泥沼篇</div>
+<div class="title" title="C++/CLI の仕様書を翻訳しています"><a href="/cgi-bin/vene/wiki/wiki.cgi">仕様書ドラフト翻訳篇</a></div>
+<div class="title" title="C++/CLI の使用例"><a href="archives.html">統合アーカイブと一緒篇</a></div>
+<div class="title" title="C++/CLI の使用例">PDFLib-Lite<br /> ラッパーの脅威篇</div>
+<br />
+<div class="title" title="自作スクリプト言語"><a href="http://www.2log.net/home/mutons/">スクリプト言語まとん・ブログ</a></div>
+<div class="title"><a href="/vene/programing/mutons/">「まとん」まとめ</a></div>
+<br />
+<div class="title"><a href="/vene/programing.html">Back</a></div>
+<div class="title"><a href="/vene/IndexPage.aspx">Home</a></div>
+</div>
+
+<div id="docview">
+<a name="DocumentTop"></a>
+<h3>C++/CLI と ClickOnce</h3>
+　クリック・ワンスはアプリケーションの配布について、Web から、ないし、ローカルのディスクから最新の更新状態を提供するマイクロソフトのソリューションです。<br />
+　このクリック・ワンスによって、アプリケーションのインストールで最新かどうかの確認をした上での差分取得が可能となります。<br />
+　それで、そのクリック・ワンスなのですが、VisualStudio 2005 Beta2 の段階では、VisualBasic と C# でしか IDE サポートされていません。そのため、良くある解説の通りにできるものだと間違えて一生懸命プロパティから「発行」ページを探しては裏切られたと叫ぶ羽目になります。<br />
+　では、C++/CLI ではクリック・ワンス機能は使えないのでしょうか？<br />
+　いいえ。そんなことはありません。<br />
+　VC++ にクリック・ワンスの IDE がついていないのは、VS2005 のリリースに向けて IDE の開発が間に合わず、切り捨てられてしまっただけなのです。<br />
+　クリック・ワンスの機能はアプリケーションに埋め込まれた manifest を利用しているので、VC++ で作成された C++/CLI アプリケーションでも利用可能です。<br />
+　ここでは、IDE サポートがない状態でどうやってクリック・ワンスを C++/CLI で利用できるようにするのか、説明します。<br />
+<br />
+<h3>サーバの準備</h3>
+<br />
+　ClickOnce によってアプリケーションを配布する場合、Web からの自動配布を考えます。<br />
+　ClickOnce 自体は別に CD からでも、ローカル・ディスクからでもインストールは可能ですが、一番利用したい形態として Web からの配信を考えます。<br />
+　そのため、配布物はサーバに置く事として、サーバ側の設定を行います。<br />
+まず、ネット上に配布用サーバを用意します。サーバは Apache でも IIS でも構いません。HTTP プロトコルでのファイル転送が可能なサーバです。.Net Framework 2.0 をインストールする必要もありません。<br />
+　.Net Framework 2.0 が必要なのは、転送された配布マニフェストを解釈する側であるクライアントのみです。<br />
+<br />
+　次に、配布に使う配布マニフェスト（デプロイメント・マニフェスト）ファイルと、アプリケーション・マニフェストがサーバから正規なMIMEタイプで転送されるよう設定します。<br />
+<br />
+ IIS 6の場合<br />
+<ol>
+<li>IIS マネージャで配布を行う Web サイトのプロパティを開きます。</li>
+<li>HTTPヘッダのタブを開きます。<br />
+<img src="IIS6PropertyPage.PNG" /></li>
+<li>MIME の種類をクリックします。<br />
+<img src="IIS6PropertyClick.PNG" /><img src="IIS6PropertyMIME.PNG" /></li>
+<li>新規作成で今回作成する配布マニフェストとアプリケーション・マニフェストを追加します。<br />
+<img src="MIMETypeDeploy.PNG" /><img src="MIMETypeAppli.PNG" /></li>
+<li>指定したMIMEタイプが設定され、サーバ側に ClickOnce の準備ができます。<br />
+<img src="IIS6PropertyMIMESet.PNG" /></li>
+<li>OK ボタンを押して設定終了です。</li>
+</ol>
+<br />
+　Apache などの他の Web サーバを使う場合でも、これらの MIME タイプを設定することで、ClickOnce のアプリケーションの配布元になることができます。<br />
+<br />
+<h3>証明書の用意</h3>
+<br />
+　<br />
+<br />
+<h3>アプリケーション・マニフェストとデプロイメント・マニフェスト</h3>
+<br />
+　アプリケーション・マニフェストはアプリケーションを構成する情報をXML化したものです。<br />
+<br />
+　クリック・ワンスを行うにあたって、もうひとつ作成しなければならないのがデプロイメント・マニフェストです。<br />
+　こちらが、VB.NET や C# で「発行」した情報を保持します。<br />
+<br />
+<h3>マニフェストの作成</h3>
+<br />
+　上述した２つのマニフェストは .NET Framework SDK に付属のツール MageUI(Mage の方はコマンドライン生成するもの) で作成することが可能です。<br />
+　ですから、特に VisualStudio 2005 でないとクリック・ワンスが利用できないなんて事はありません。.NET Framework SDK だけでも同様の手順で任意のアプリケーションの配布設定が可能です。<br />
+<br />
+<h3>ClickOnce サンプル</h3>
+<br />
+　以下に、クリック・ワンスの実装サンプルを提供します。<br />
+<ul>
+<li><a href="archtail/ArchTail.html">アーク・テイル</a></li>
+</ul>
+<br />
+<hr />
+<br />
+<a href="#DocumentTop">Topに戻る</a><br />
+<br />
+<br />
+</div>
+
+</body>
+</html>

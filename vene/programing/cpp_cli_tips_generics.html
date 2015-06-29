@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"DTD/xhtml1-strict.dtd">
+
+<?xml-stylesheet href="/vene/css/illuminated.css" type="text/css" ?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+
+<head>
+	<title>啓発済み ： テンプレートとジェネリクス</title>
+
+	<!-- スタイルシート指定 -->
+	<link href="/vene/css/illuminated.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+
+#index
+{
+	position: absolute;
+	left: 20px; top: 80px;
+	width: 120px;
+	border: 1px none #8888f8;
+    border-top: 1px solid #8888f8;
+    border-left: 1px solid #8888f8;
+    border-right: 2px solid #666699;
+    border-bottom: 2px solid #666699;
+    padding: 5px 3px 3px 0.5em;
+}
+
+#docview
+{
+	position: absolute;
+	left: 150px; top: 80px;
+}
+
+pre
+{
+	border: 1px solid gray;
+	padding: 4px;
+}
+
+</style>
+
+</head>
+
+<body bgcolor="#ffffff" text="black" >
+<br />
+<h2>C++/CLI テンプレートとジェネリクス</h2>
+<br />
+<div id="index">
+<div class="title" title="C++/CLI の紹介です"><a href="cpp_cli.html">電波襲来篇</a></div>
+<div class="title" title="C++/CLI の基本紹介です">基本解説篇</div>
+<div class="title" title="C++/CLI の機能紹介です"><a href="cpp_cli_bases.html">機能解説篇</a></div>
+<div class="title" title="C++/CLI の用語紹介です">用語集泥沼篇</div>
+<div class="title" title="C++/CLI の仕様書を翻訳しています"><a href="/cgi-bin/vene/wiki/wiki.cgi">仕様書ドラフト翻訳篇</a></div>
+<div class="title" title="C++/CLI の使用例"><a href="archives.html">統合アーカイブと一緒篇</a></div>
+<div class="title" title="C++/CLI の使用例">PDFLib-Lite<br /> ラッパーの脅威篇</div>
+<br />
+<div class="title" title="自作スクリプト言語"><a href="http://www.2log.net/home/mutons/">スクリプト言語まとん・ブログ</a></div>
+<div class="title"><a href="/vene/programing/mutons/">「まとん」まとめ</a></div>
+<br />
+<div class="title"><a href="/vene/programing.html">Back</a></div>
+<div class="title"><a href="/vene/IndexPage.aspx">Home</a></div>
+</div>
+
+<div id="docview">
+<a name="DocumentTop"></a>
+<h3>前書き</h3>
+　C++/CLI には型パラメータ変数を扱うのに generics と template の２種類が用意されています。<br />
+　この二つ、構文が似ているせいか一緒くたにされて、古くからの C++ ユーザーには generics は駄目だとか何とか、あらぬ誤解を受けていたりしていますが、ちゃんと使い分けの境界がはっきりしています。<br />
+　ここでは、generics と template の境界を説明し、どんなときにどちらを使えばいいのか、わかりやすく整理したいと思います。<br />
+<br />
+<h3>それぞれの特徴</h3>
+　template はぶっちゃげ、高機能なマクロです。<br />
+　その本質的な処理は「文字置き換え」による型変形であり、実装への適合です。<br />
+　そのため、template には以前から次のような問題が存在します。<br />
+<dl>
+<dt>ライブラリ化できない。</dl>
+<dd>
+　template ではヘッダに実装を記述しています。これは template がコンパイル時に展開されるということから来ています。<br />
+　そのため、template を含むライブラリを配布する場合、ヘッダを付加して配布しなければなりません。<br />
+　一応、テンプレートを export できる実装系も存在していますが、実装の困難さから少なくとも VC8 では実装されていません。<br />
+</dd>
+</dl>
+<br />
+　C++/CLI は VES と呼ばれる仮想エンジンを前提として作成されています。<br />
+　仮想エンジンは基本的にアセンブリと呼ばれる物理単位（まぁ、DLL）をロードし、エントリ・ポイント（要は、main 関数）を持つアセンブリをアプリケーションとして実行します。<br />
+　そのため、ライブラリに相当するアセンブリ中には、外部に公開する事が可能な型と内部的にのみ使用できる型に分類されており、型の情報をアセンブリ自身が管理しています。<br />
+　これまで、C や C++ では、ライブラリにヘッダが付いているのは当たり前のことでした。型情報はそこにしかありませんし、リンクするためのシンボル情報も必要だったからです。ですが、.net ではアセンブリ自体が型情報を保持しているため、アセンブリのみの配布が行われることとなります。<br />
+　.net の環境ではライブラリの配布とはアセンブリの配布に当たります。アセンブリには公開可能なクラスや関数の情報が記述されており、その安全性をベンダーが保証するためにベンダーによって署名されています。<br />
+　generics ではコンパイル時には生成型（constructed type）という型を生成し、アセンブリに登録します。<br />
+　この生成型はまだ型が確定しておらず、アダプトする型が与えられるのを待機している状況にあります。<br />
+　もちろん、アセンブリ外に非公開な generics （クラスまたは関数）の場合には、すでに使用されることで使われる型が確定しているので、これらの生成型は「閉じて」います。そうでない、型を引数として確定するのを待機しているものを「開いた」生成型と呼びます。<br />
+
+<h4>TestClazz.cpp</h4>
+<pre>
+#using &lt;mscorlib.dll&gt;
+
+using namespace System;
+
+template &lt;typename T&gt;
+    public ref class TestTempClazz
+{
+public:
+    TestTempClazz()
+    {
+        Console::WriteLine("TestTempClazz constructor.");
+    }
+
+    virtual ~TestTempClazz()
+    {
+        Console::WriteLine("TestTempClazz destructor.");
+    }
+
+    !TestTempClazz()
+    {
+        Console::WriteLine("TestTempClazz finalizer.");
+    }
+
+private:
+    T _param;
+};
+generic &lt;typename T&gt;
+    public ref class TestGenClazz
+{
+public:
+    TestGenClazz()
+    {
+        Console::WriteLine("TestGenClazz constructor.");
+    }
+
+    virtual ~TestGenClazz()
+    {
+        Console::WriteLine("TestGenClazz destructor.");
+    }
+
+    !TestGenClazz()
+    {
+        Console::WriteLine("TestGenClazz finalizer.");
+    }
+
+private:
+    T _param;
+};
+</pre>
+<br />
+　このファイルからアセンブリを作ってみます。<br />
+<code>
+cl /clr /ld TestClazz.cpp
+</code>
+とすることで、TestClazz.dll アセンブリが作成できます。<br />
+　このとき、それぞれの型をインスタンス化してみましょう。<br />
+<br />
+<h4>sample.cpp</h4>
+<pre>
+#using &lt;mscorlib.dll&gt;
+#using "TestClazz.dll"
+
+using namespace System;
+
+int main()
+{
+    TestGenClazz&lt;String^&gt;^ test = gcnew TestGenClazz&lt;String^&gt;;
+    TestTempClazz&lt;String^&gt;^ temp = gcnew TestTempClazz&lt;String^&gt;;
+    return 0;
+}
+</pre>
+　これをコンパイルすると、<code>cl /clr sample.cpp</code> 次のようなエラーが発生します。<br />
+<pre>
+C:\temp>cl /clr sample.cpp
+Microsoft(R) C/C++ Optimizing Compiler Version 14.00.50215.44
+for Microsoft(R) .NET Framework Version 2.00.50215.44
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+sample.cpp
+sample.cpp(10) : error C2065: 'TestTempClazz' : 定義されていない識別子です。
+sample.cpp(10) : error C2275: 'System::String' : この型は演算子として使用できません
+        c:\windows\microsoft.net\framework\v2.0.50215\mscorlib.dll : 'System::String' 
+の宣言を確認してください。
+sample.cpp(10) : error C2059: 構文エラー : '&gt;'
+</pre>
+　これはつまり、TestTempClazz&lt;String^&gt; なる型が存在しないことを説明しています。<br />
+　「テンプレートはアセンブリを越えて型を提供できない」ということがおわかりになるでしょうか？<br />
+<br />
+　では、どんなときに template を利用すればいいのでしょうか？<br />
+　それは「アセンブリ独立を守ることができる範囲」、と言うことになります。<br />
+　上述した TestTempClazz もそのアセンブリ内での使用に限定するなら、無事にコンパイルし自由に使うことが可能です。その時、残念ながら class に対する修飾子（上層型識別子：<b> Top level visibility </b>）は private になります。<br />
+　この上層型識別子はアセンブリ中に定義したクラスを公開するかどうかを指定するものです。<br />
+<br />
+<h3>まとめ</h3>
+　上記のように、generics と template はそれぞれに適用範囲を持っています。<br />
+<ul>
+<li>アセンブリ外に公開するクラスや関数は generics で実装</li>
+<li>アセンブリ内で閉じている記述やアセンブリを利用しないのなら template を使ってもいい</li>
+</ul>
+　この点を意識すると、どこが template でいいのか、どこが generics でなければならないのか、がはっきりすると思われます。<br />
+<br />
+<hr />
+<br />
+<a href="#DocumentTop">Topに戻る</a><br />
+<br />
+<br />
+</div>
+
+</body>
+</html>

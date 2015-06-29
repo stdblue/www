@@ -1,0 +1,17 @@
+<!--
+ スライダー機能実装用CSS
+ -->
+
+#textarea
+{
+	font-size: 12pt;
+}
+
+#slider
+{
+	position: absolute;
+	left: 120px;
+	top:  0pt;
+	width: 214px;
+	margin: 0 0 0 0;
+}

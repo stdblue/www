@@ -1,0 +1,44 @@
+<!--
+  -->
+
+body
+{
+	margin-left: 10%;
+	margin-right: 10%;
+	line-height: 1.6;
+}
+
+h1
+{
+	text-align: center;
+	font-family: "‚l‚r –¾’©", Arial, sans-serif;
+}
+
+h2
+{
+	border-left:7px solid #3A9C4F;
+	background:#b8e3b1;
+	color:#FFFFFF;
+	font-size:13px;
+	margin:0;
+	padding:3px 10px;
+	text-align:left;
+	letter-spacing:2px;
+}
+
+h5
+{
+	margin-right: 10%;
+	text-align: right;
+	font-weight: normal;
+	letter-spacing: 1pt;
+	font-family: "Haettenschweiler", monospace;
+	font-size: 10pt;
+}
+
+.devicevoice
+{
+	font-family: "MID-CHILDA_Regular", Ariel, monospace;
+	font-size: smaller;
+}
+

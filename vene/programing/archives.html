@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"DTD/xhtml1-strict.dtd">
+
+<?xml-stylesheet href="/vene/css/illuminated.css" type="text/css" ?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+
+<head>
+	<title>啓発済み ： C++/CLI with 統合アーカイブ</title>
+
+	<!-- スタイルシート指定 -->
+	<link href="/vene/css/illuminated.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+
+#index
+{
+	position: absolute;
+	left: 20px; top: 80px;
+	width: 120px;
+	border: 1px none #8888f8;
+    border-top: 1px solid #8888f8;
+    border-left: 1px solid #8888f8;
+    border-right: 2px solid #666699;
+    border-bottom: 2px solid #666699;
+    padding: 5px 3px 3px 0.5em;
+}
+
+#docview
+{
+	position: absolute;
+	left: 150px; top: 80px;
+}
+
+</style>
+
+</head>
+
+<body bgcolor="#ffffff" text="black" >
+<br />
+<h2 align="center">C++/CLI with 統合アーカイブ</h2>
+<br />
+<div id="index">
+<div class="title" title="C++/CLI の紹介です"><a href="/vene/programing/cpp_cli.html">C++/CLI 電波襲来</a></div>
+<div class="title" title="C++/CLI の仕様翻訳です"><a href="/cgi-bin/vene/wiki/wiki.cgi">C++/CLI 戦線異状なし？</a></div>
+<div class="title" title="C++/CLI の使用例">C++/CLI with 統合アーカイブ</div>
+<div class="title" title="自作スクリプト言語"><a href="http://www.2log.net/home/mutons/">スクリプト言語まとん・ブログ</a></div>
+<div class="title"><a href="/vene/programing/mutons/">スクリプト言語「まとん」まとめ</a></div>
+<br />
+<div class="title"><a href="/vene/programing.html">Back</a></div>
+<div class="title"><a href="/vene/IndexPage.aspx">Home</a></div>
+</div>
+
+<div id="docview">
+　何か、一部で C++/CLI から Win32 API がシームレスに呼び出せないと誤解している方がおられるようなので、サンプルを作ってみました。<br />
+<br />
+　統合アーカイブ・プロジェクトの規定する API を利用して、アセンブリとして C++/CLI で作ったアーカイバ操作クラスを公開できるようラッパーを作ってみました。<br />
+<br />
+　<a href="http://www.kmonos.net/">Noah</a> のソースを参照に、このサンプルは作成されています。<br />
+<br />
+<ul>
+<li><a href="archiver_image.png">構成図</a></li>
+<li><a href="CommonArchiveSample.lzh" title="残骸">VisualStudio 2005 Beta1 時点でのプロジェクト</a></li>
+<li>VisualStudio 2005 Beta2 用プロジェクト（準備中）</li>
+</ul>
+<br />
+　詳細は上のプロジェクトを落として見てみてください。<br />
+　それほど複雑な構成はしていません。名前とDLL名をファクトリに渡すと、アーカイバ・クラスが帰ってくるので、それに対してアーカイブ・ファイルを指定することで、DataTable 型でアーカイブ・ファイル中のファイル名のリストを返します。<br />
+<br />
+<pre style="border:1px solid gray; padding: 4px;">
+using namespace System;
+using namespace System::Data;
+using namespace StdBlue::Archive;
+
+int _tmain()
+{
+    Archiver^ arch = ArchFactory::CreateArchive(L"Unlha", L"UNLHA32.DLL");
+    if ( arch == nullptr ) {
+        Console::WriteLine(L"UNLHA32.dll がロードできませんでした。");
+        return 1;
+    }
+
+    DataTable^ files = arch->GetList(L"CommonArchiverSample.lzh");
+    if ( files != nullptr ) {
+        Console::WriteLine(L"データ・テーブルは使えますよ～。");
+    }
+
+    return 0;
+}
+</pre>
+　ここで使用されているのは、Win32 API のうち、LoadLibrary, FreeLibrary, GetProcAddress, GetDesktopWindow,  WideCharToMultiByte です。これらの API は比較的使用頻度が高いので、参考になるかと思われます。<br />
+　また、このアーカイバはStdBlueArchive.dllというアセンブリになっています。そのため、C# や VB.net から利用することも可能です。<br />
+サンプル C# <br />
+<pre style="border:1px solid gray; padding: 4px;">
+using System;
+using System.Data;
+using StdBlue.Archive;
+
+public class Sample
+{
+    static int Main(string [] args)
+    {
+        Archiver arch = ArchFactory.CreateArchive("Unlha", "UNLHA32.DLL");
+        if ( arch == null ) {
+            Console.WriteLine("UNLHA32.dll がロードできませんでした。");
+            return 1;
+        }
+
+        DataTable fileList = arch.GetList("CommonArchiverSample.lzh");
+        if ( fileList != null ) {
+     	   Console.WriteLine("データ・テーブルは使えますよ～。");
+        }
+        return 0;
+    }
+};
+</pre>
+　プロジェクトは「ユニコードを使用する」にしてあります。<br />
+<br />
+　それだけでは、余りになんなので。<br />
+<br />
+<h3>System::String型からマルチバイト文字に変換する</h3>
+　それほど大したことはやらないです。<br />
+　System::String はUNICODEなので、次のような手順で変換できます。<br />
+<ol>
+<li>System::String から array&lt;Char&gt;^ に変換する。</li>
+<li>配列の第一要素に pin を刺す。</li>
+<li>WideCharToMultiByte で変換する。</li>
+</ol>
+　この手順で、System::String型からchar*型に変換することができます。<br />
+　具体的なコードでは、<br />
+<pre style="border:1px solid gray; padding: 4px;">
+std::string buff;  // MultiByte文字列を入れる STL の basic_string&lt;char&gt;
+
+// System::String型をChar型（UNICODEの wchar_t に対応）に変換
+array&lt;Char&gt;^ arr = stringValue->ToCharArray();
+
+// ガベージ・コレクトで移動しないようポインタにピンを刺す
+pin_ptr&lt;Char&gt; wptr = &arr[0];
+
+// 変換後文字サイズを取得
+char *buffer = 0;
+int len = ::WideCharToMultiByte(CP_UTF8, 0, wptr, num, buffer, 0, NULL, NULL);
+if ( len > 0 ) {
+    // 文字バッファを取得して
+    buffer = new char[len + 1];
+    memset(buffer, 0, len+1);
+    // UNICODE を MultiByte に変換
+    ::WideCharToMultiByte(CP_UTF8, 0, wptr, num, buffer, len, NULL, NULL);
+
+    // バッファをMultiByteの文字型に代入
+    buff = buffer;
+    if ( buffer ) delete [] buffer;
+}
+</pre>
+　簡単に std::string ConvertToMultiByte(System::String^ stringValue) みたいな関数を用意しておいてもいいですね。<br />
+<br />
+<hr />
+<br />
+</div>
+</body>
+</html>

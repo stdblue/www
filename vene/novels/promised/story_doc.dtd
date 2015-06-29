@@ -1,0 +1,6 @@
+<!--
+  -->
+
+<!ELEMENT document (story*, comment*) >
+
+<!ELEMENT story (title?, comment*) >

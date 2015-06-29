@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"DTD/xhtml1-strict.dtd">
+
+<?xml-stylesheet href="/vene/css/illuminated.css" type="text/css" ?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+
+<head>
+	<title>啓発済み ： Mutons the programing language define of constants</title>
+
+	<!-- スタイルシート指定 -->
+	<link href="/vene/css/illuminated.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+
+#index
+{
+	position: absolute;
+	left: 20px; top: 80px;
+	width: 120px;
+	border: 1px none #8888f8;
+    border-top: 1px solid #8888f8;
+    border-left: 1px solid #8888f8;
+    border-right: 2px solid #666699;
+    border-bottom: 2px solid #666699;
+    padding: 5px 3px 3px 0.5em;
+}
+
+#docview
+{
+	position: absolute;
+	left: 150px; top: 80px;
+}
+
+th {
+	text-align : left;
+}
+
+</style>
+
+</head>
+
+<body bgcolor="#ffffff" text="black" >
+<br />
+<h2>スクリプト言語まとん : 定数定義</h2>
+<br />
+<div id="index">
+<div class="title"><a href="http://www.2log.net/home/mutons/">ブログ</a></div>
+<div class="title"><a href="language_define.html">言語仕様</a></div>
+<br />
+<div class="title">定数定義</div>
+<div class="title"><a href="lang_def_identifier.html">識別子定義</a></div>
+<div class="title"><a href="lang_def_expression.html">演算定義</a></div>
+<div class="title"><a href="lang_def_declareration.html">宣言定義</a></div>
+<div class="title"><a href="lang_def_statements.html">構文定義</a></div>
+<div class="title"><a href="lang_def_comments.html">コメント定義</a></div>
+<br />
+<div class="title"><a href="/vene/mutons/index.html">Back</a></div>
+<div class="title"><a href="/vene/IndexPage.aspx">Home</a></div>
+</div>
+
+<div id="docview">
+　ここにまとんにおける定数を定義します。<br />
+　定数には次に示すような階層が存在します。これらの定数はそれぞれ適切な型を持ちます。<br />
+<br />
+<dl>
+  <dt>定数</dt>
+  <dd>
+    <dl>
+      <dt>数値</dt>
+      <dd>
+        <br />
+        <dl>
+          <dt>整数</dt>
+          <dd>
+            整数を表す定数で、通常は integer 型に配置されます。<br />
+            integer 型は符号付き32bit値です。<br />
+            <br />
+            <dl>
+              <dt>8進数</dt>
+              <dd> 0 から始まり、 0 から 7 までの8進数で記述される数値。</dd>
+              <dt>10進数</dt>
+              <dd> 単に 0 であるか、0 でない値で始まり 0 から 9 までの 10 進数で記述される数値。</dd>
+              <dt>16進数</dt>
+              <dd> 0x もしくは 0X で始まり、大文字小文字に関係なく 0 から 9 までの数値と A から F までのアルファベットで記述される 16 進数値。</dd>
+              <br />
+            </dl>
+          </dd>
+          <dt>浮動小数点数</dt>
+          <dd>浮動小数点値を表す定数です。通常は real 型に配置されます。<br />
+          real 型は符号付き32bit値です。<br />
+          </dd>
+        </dl>
+      </dd>
+    </dl>
+    <br />
+  </dd>
+  <dd>
+    <dl>
+      <dt>文字列</dt>
+      <dd>文字列を表す定数。通常は string 型に配置されます。</dd>
+    </dl>
+    <br />
+  </dd>
+</dl>
+<br />
+　まとんは _ （アンダースコア）による数値書式の整理を許します。<br />
+　_ （アンダースコア）は数値としては無視され、何にも解釈されません。<br />
+<br />
+<dl>
+<dt>１０進数</dt>
+<dd>
+<pre>
+0       // 0 のみの値。
+12321   // １０進数定数
+12_321  // 3 桁で書式整理。12321 に等しい
+1_2345  // 4 桁で書式整理。12345 に等しい。
+</pre>
+</dd>
+<dt>８進数</dt>
+<dd>
+<pre>
+0        // これは10進数
+037      // 31 に等しい。
+0_3      // 03 に等しい。
+051_272  // 051272 を３桁で書式整理。
+</pre>
+</dd>
+<dt>１６進数</dt>
+<dd>
+<pre>
+0              // これは10進数
+0x             // エラー。0x には必ず一つ以上の１６進数が続かなくてはならない。
+0x5b           // 91 に等しい。
+0X5B           // 上に同じ
+0x5B           // 上に同じ
+0X5b           // 上に同じ
+0x_3           // 0x3 と等しい。
+0x_            // エラー。数値が存在しない。
+0x_FF_8B       // 0xFF8B を２桁で書式整理。
+0x_FF_8B_52_16 // 0xFF8B5216 と同じ。
+</pre>
+</dd>
+</dl>
+<br />
+<h3>EBNF 定義</h3>
+<table>
+<tr> <th>定数</th><td></td> </tr>
+<tr> <th></th> <td>
+:=　 <a href="#numeric_constant">数値定数</a><br />
+|　　<a href="#string_constant">文字列定数</a><br />
+;<br />
+</td></tr>
+<tr> <th><a name="numeric_constant">数値定数</a></th><td></td> </tr>
+<tr> <th></th> <td>
+:=　 <a href="#integral_constant">整数定数</a><br />
+|　　<a href="#floating_constant">浮動小数点定数</a><br />
+;<br />
+</td></tr>
+<tr> <th><a name="integral_constant">整数定数</a></th><td></td> </tr>
+<tr> <th></th> <td>
+:=　 <a href="#digital_constant">１０進数定数</a><br />
+|　　<a href="#octagonal_constant">８進数定数</a><br />
+|　　<a href="#hexagonal_constant">１６進数定数</a><br />
+;<br />
+</td></tr>
+<tr> <th><a name="digital_constant">１０進数定数</a></th><td></td> </tr>
+<tr> <th></th> <td>
+:=　 ( １０進数値 - '0' ) ( １０進数値 | '_' )*<br />
+|　　'0'<br />
+;<br />
+</td></tr>
+<tr> <th><a name="octagonal_constant">８進数定数</a></th><td></td> </tr>
+<tr> <th></th> <td>
+:=　 '0' '_'? ８進数 ( ８進数 | '_' ) *<br />
+;<br />
+</td></tr>
+<tr> <th><a name="hexagonal_constant">１６進数定数</a></th><td></td> </tr>
+<tr> <th></th> <td>
+:=	( "0x" | "0X" ) '_'? １６進数 ( １６進数 | '_' )*<br />
+;<br />
+</td></tr>
+<tr> <th><a name="floating_constant">浮動小数点定数</a></th><td></td> </tr>
+<tr> <th></th> <td>
+:=　 １０進数  ( １０進数 | '_' )* '.' ( １０進数 | '_' )+ ( 'e' | 'E' ) 符号? ( １０進数 | '_' )+<br />
+|　　１０進数? ( １０進数 | '_' )* '.' ( １０進数 | '_' )+ ( ( 'e' | 'E' ) 符号? ( １０進数 | '_' )+ )?<br />
+|　　１０進数  ( １０進数 | '_' )* '.' ( １０進数 | '_' )* ( ( 'e' | 'E' ) 符号? ( １０進数 | '_' )+ )?<br />
+;<br />
+</td></tr>
+<tr> <th><a name="string_constant">文字列定数</a></th><td></td> <th>
+<tr> <th></th> <td>
+:=　 '"' ( "\\\"" | ( 任意文字 - '"' ) )* '"'<br />
+;<br />
+</td></tr>
+</table>
+<br />
+<hr />
+<br />
+</div>
+</body>
+</html>

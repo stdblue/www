@@ -1,0 +1,21 @@
+<!-- 純白の盾 スタイルシート -->
+<!-- 最終更新 $Date: 2004/07/20 12:16:32 $ -->
+<!-- 文書　   $Revision: 1.2 $ -->
+
+body {
+	line-height: 180%;
+	font-family: 'Arial', 'ＭＳ ゴシック', '細明朝体', 'sans-serif';
+	letter-spacing: 2px;
+	margin-left: 10%;
+	margin-right: 10%;
+	background-color: snow;
+	color: black;
+}
+
+h1 {
+	font-family: 'HG行書体', 'Monotype Corsiva', '平成明朝', 'Book Antiqua Italic', 'Times', 'serif';
+}
+
+.sensual {
+	font-family: 'HG行書体', 'Palatino Linotype', '平成明朝', 'Book Antiqua Italic', 'Times', 'serif';
+}

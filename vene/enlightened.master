@@ -1,0 +1,77 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+    <title>Enlightened Master page</title>
+    <link href="enlightened.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<table width="100%" cellpadding="0" cellspacing="0">
+<tr>
+<td width="250" align="right" valign="top">
+<h1>啓発済み？</h1>
+<div class="title" title="コンテンツ">Contents</div>
+<p>
+<b><a href="policy.aspx" title="はじめに">About</a></b><br />
+<b><a href="http://d.hatena.ne.jp/signe/" target="_top" title="日記">Diary</a></b><br />
+<b><a href="http://www.stdblue.net/cgi-bin/cbbs/cbbs.cgi" title="掲示板">BBS</a><a href="http://www.stdblue.net/cgi-bin/cbbs/ck.cgi" title="携帯用">i</a></b><br />
+<b><a href="GiftDisplay.aspx" title="頂き物">Gifts</a></b><br />
+<b><a href="link_to.html" title="リンク">Links</a></b><br />
+<b><a href="mails.aspx" title="メールフォーム">Mail</a></b><br />
+<b><a href="Default.aspx" title="トップ・ページ">Top</a></b><br />
+</p>
+
+<div class="title" title="テーブルトークRPG">TRPG</div>
+<div class="sub" title="MAGE"><a href="trpg.aspx">MAGE</a></div>
+<p>
+</p>
+
+<div class="title" title="プログラミング">Programming</div>
+<div class="sub" title="一般">一般</div>
+<p>
+<a href="programing.html">C++/CLI</a><br />
+<a href="programing/mutons/" title="自作スクリプト言語">まとん</a><br />
+</p>
+
+<div class="title" title="自作小説"><a href="novels.aspx">Novels</a></div>
+<div class="scroll">
+<div class="sub" title="一次創作">Original</div>
+<p>
+<a href="novels.aspx#premitive">SF</a><br />
+<a href="novels/mggg/" target="_top">魔法少女幻想</a><br />
+</p>
+
+<div class="sub" title="二次小説"><a href="novels.aspx#secondary">Secondary</a></div>
+<p>
+<a href="novels/regenesis/" target="_top">ナデシコ</a><br />
+<a href="novels/oaoss/one_and_only_top.html" target="_top">G SEED</a><br />
+<a href="dont_stop_the_music.html" target="_top">マリみて</a><br />
+<a href="novels/lyrical/" target="_top">なのは</a><br />
+</p>
+</div>
+
+<div class="title">Site</div>
+<p>
+<br />
+<b>Site :: </b>Enlightened?<br />
+<b>管理 :: </b>うぇねふぃくす<br />
+<b>非常用 :: </b><a href="http://8614.teacup.com/veneficus/bbs/">掲示板</a><br />
+</p>
+<br />
+</td>
+    
+<td style="border-right:1px solid #000;border-left:1px solid #000;" height="100%" valign="top">
+  <asp:ContentPlaceHolder id="cphContBase" runat="server">
+  </asp:ContentPlaceHolder>
+</td>
+
+</tr>
+</table>
+
+</body>
+
+</html>

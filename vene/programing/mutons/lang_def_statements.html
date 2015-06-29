@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"DTD/xhtml1-strict.dtd">
+
+<?xml-stylesheet href="/vene/css/illuminated.css" type="text/css" ?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+
+<head>
+	<title>啓発済み ： Mutons the programing language define of constants</title>
+
+	<!-- スタイルシート指定 -->
+	<link href="/vene/css/illuminated.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+
+#index
+{
+	position: absolute;
+	left: 20px; top: 80px;
+	width: 120px;
+	border: 1px none #8888f8;
+    border-top: 1px solid #8888f8;
+    border-left: 1px solid #8888f8;
+    border-right: 2px solid #666699;
+    border-bottom: 2px solid #666699;
+    padding: 5px 3px 3px 0.5em;
+}
+
+#docview
+{
+	position: absolute;
+	left: 150px; top: 80px;
+}
+
+</style>
+
+</head>
+
+<body bgcolor="#ffffff" text="black" >
+<br />
+<h2>スクリプト言語まとん</h2>
+<br />
+<div id="index">
+<div class="title"><a href="http://www.2log.net/home/mutons/">ブログ</a></div>
+<div class="title"><a href="language_define.html">言語仕様</a></div>
+<div class="title">定数定義</div>
+<br />
+<div class="title"><a href="/vene/mutons/index.html">Back</a></div>
+<div class="title"><a href="/vene/IndexPage.aspx">Home</a></div>
+</div>
+
+<div id="docview">
+<h3>まとん言語仕様</h3>
+<br />
+<pre>
+定数
+	:=	数値定数
+	|	文字定数
+	;
+数値定数
+	:=	整数定数
+	|	浮動小数点定数
+	;
+
+整数定数
+	:=	１０進数定数
+	|	８進数定数
+	|	１６進数定数
+	;
+
+符号
+	:= ( '+' | '-' )
+	;
+
+１０進数定数
+	:=	( １０進数値 - '0' ) ( １０進数値 | '_' )*
+	|	'0'
+	;
+
+８進数定数
+	:=	'0' ８進数 ( ８進数 | '_' ) *
+	;
+
+１６進数定数
+	:=	( "0x" | "0X" ) １６進数 ( １６進数 | '_' )*
+	;
+
+浮動小数点定数
+	:=	１０進数  ( １０進数 | '_' )* '.' ( １０進数 | '_' )+ ( 'e' | 'E' ) 符号? ( １０進数 | '_' )+
+	|	１０進数? ( １０進数 | '_' )* '.' ( １０進数 | '_' )+ ( ( 'e' | 'E' ) 符号? ( １０進数 | '_' )+ )?
+	|	１０進数  ( １０進数 | '_' )* '.' ( １０進数 | '_' )* ( ( 'e' | 'E' ) 符号? ( １０進数 | '_' )+ )?
+	;
+
+文字定数
+	:= '"' ( "\\\"" | ( 任意文字 - '"' ) )* '"'
+	;
+
+識別子
+	:=	( ( 任意文字 - 符号 - ';' - '"' - 空白 ) ( 任意文字 - 符号 - ';' - 空白 )* ) - 予約語
+	;
+	
+完全修飾識別子
+	:=	識別子 ( '.' 完全修飾識別子 )?
+	;
+
+コメント
+	:=	"//" ( 任意文字 - 行端 )
+	|	"/--" ( 任意文字 - "--/" )* "--/"
+	|	"/*" ( 任意文字 - "*/" )* "*/"
+	;
+
+キーワード
+	:=	型宣言キーワード
+	|	制御構文キーワード
+	|	構造化キーワード
+	;
+
+型宣言キーワード
+	:=	"integer" "real" "string" "array" "object" "functum" "accessor"
+	;
+
+制御構文キーワード
+	:=	"if" "switch" "case" "default" "for" "for_each" "while" "do" "continue" "break" "goto"
+	;
+	
+構造化キーワード
+	:=	"module" "import"
+	; 
+
+// 演算子
+
+代入演算子
+	:=	"=" | "+=" | "-=" | "*=" | "/=" | "%="
+	;
+
+// 演算
+
+基本演算
+	:=	識別子
+	|	定数
+	|	'(' 演算 ')'
+	;
+	
+後置演算
+	:=	基本演算 後置演算修飾子
+	;
+
+後置演算修飾子
+	:=	( '[' 演算 ']'
+		| '(' パラメータ配列? ')'
+		| '++'
+		| '--'
+		) 後置演算修飾子
+	| e
+	;
+	
+単項演算
+	:=	後置演算
+	|	"++" 単項演算
+	|	"--" 単項演算
+	|	単項演算子 キャスト演算
+	;
+	
+単項演算子
+	:= '+' | '-'
+	;
+
+キャスト演算
+	:=	'(' 型宣言キーワード ')' キャスト演算
+	|	単項演算
+	;
+	
+パラメータ配列
+	:=	代入演算 ( ',' 代入演算 )*
+
+代入演算
+	:=	識別子 代入演算子 ( 定数 | 識別子 )
+	|	識別子 代入演算子 演算
+	;
+
+機能子
+	:=	名前付き機能子
+	|	匿名機能子
+	;
+
+名前付き機能子
+	:=	"functum" identifier パラメータ配列? '{' 構文* '}'
+	;
+
+匿名機能子
+	:=	'{' 構文* '}' - 構文
+	;
+
+// 構文定義
+
+宣言文
+	:=	型宣言キーワード 識別子 ';'
+	|	型宣言キーワード 代入文 ( ',' 代入文 )* ';'
+	;
+
+// 制御構文
+
+for構文
+	:=	"for" '(' 前置実行構文 ';' 条件式 ';' 後置実行構文 ')' 機能子
+	;
+	
+while構文
+	:=	"while" '(' 条件式 ')' 機能子
+	;
+
+do_while構文
+	:=	"do" 機能子 "while" '(' 条件式 ')' ';'
+	;
+
+if構文
+	:=	"if" '(' 条件式 ')' 機能子 ( "else" if構文 )* ( "else" 機能子 )?
+	；
+
+switch_case構文
+	:=	"switch" '(' 演算 ')' '{' ( "case" 定数 機能子 )* ( "default" 機能子 )? '}'
+	;
+</pre>
+<br />
+<hr />
+<br />
+</div>
+</body>
+</html>

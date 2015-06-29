@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"DTD/xhtml1-strict.dtd">
+
+<?xml-stylesheet href="/vene/css/illuminated.css" type="text/css" ?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+
+<head>
+	<title>啓発済み ： プロパティ</title>
+
+	<!-- スタイルシート指定 -->
+	<link href="/vene/css/illuminated.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+
+#index
+{
+	position: absolute;
+	left: 20px; top: 80px;
+	width: 120px;
+	border: 1px none #8888f8;
+    border-top: 1px solid #8888f8;
+    border-left: 1px solid #8888f8;
+    border-right: 2px solid #666699;
+    border-bottom: 2px solid #666699;
+    padding: 5px 3px 3px 0.5em;
+}
+
+#docview
+{
+	position: absolute;
+	left: 150px; top: 80px;
+}
+
+.title
+{
+	border: 1px solid #8888f8;
+}
+
+pre
+{
+	border: 1px solid gray;
+	padding: 4px;
+    line-height: 120%;
+}
+
+</style>
+
+</head>
+
+<body bgcolor="#ffffff" text="black" >
+<br />
+<h2 align="center">C++/CLI プロパティいろいろ</h2>
+<br />
+<div id="index">
+<div class="title" title="C++/CLI の紹介です"><a href="cpp_cli.html">電波襲来篇</a></div>
+<div class="title" title="C++/CLI の基本紹介です">基本解説篇</div>
+<div class="title" title="C++/CLI の機能紹介です"><a href="cpp_cli_bases.html">機能解説篇</a></div>
+<div class="title" title="C++/CLI の用語紹介です">用語集泥沼篇</div>
+<div class="title" title="C++/CLI の仕様書を翻訳しています"><a href="/cgi-bin/vene/wiki/wiki.cgi">仕様書ドラフト翻訳篇</a></div>
+<div class="title" title="C++/CLI の使用例"><a href="archives.html">統合アーカイブと一緒篇</a></div>
+<div class="title" title="C++/CLI の使用例">PDFLib-Lite<br /> ラッパーの脅威篇</div>
+<br />
+<div class="title" title="自作スクリプト言語"><a href="http://www.2log.net/home/mutons/">スクリプト言語まとん・ブログ</a></div>
+<div class="title"><a href="/vene/programing/mutons/">「まとん」まとめ</a></div>
+<br />
+<div class="title"><a href="/vene/programing.html">Back</a></div>
+<div class="title"><a href="/vene/IndexPage.aspx">Home</a></div>
+</div>
+
+<div id="docview">
+<a name="DocumentTop"></a>
+<h3>プロパティ</h3>
+<br />
+　C++/CLI においてプロパティはいろいろと楽しいことが可能です。<br />
+　特に、インターフェイスやジェネリクス、メソッド・オーバーライド（メソッド上書き）と組み合わせて変わったことが楽しめます。<br />
+<br />
+<h3>トリビアル・プロパティ（簡易プロパティ）</h3>
+<br />
+　public な変数を使うくらいなら、これを使いましょう。<br />
+<br />
+<pre>
+public ref class TestClazz
+{
+public:
+    TestClazz() {}
+    property int Trivial;  // これがトリビアル・プロパティ
+};
+
+int main(stdcli::array&lt;String^&gt;^ args)
+{
+    TestClazz cls;
+    cls.Trivial = 7;
+    Console::WriteLine(cls.Trivial);
+}
+</pre>
+<br />
+　こうするとコンパイラが自動的に変数のセッターとゲッター、そして、自動変数を用意してくれます。<br />
+　構造体とかで使うと便利になるのかな。<br />
+<br />
+<br />
+<h3>スコープのアクセサのアクセス指定</h3>
+<br />
+　managed C++ で可能だったアクセサ関数毎のアクセサ指定も次のようにできます。<br />
+<br />
+<pre>
+public ref class SampleSlazz
+{
+private:
+    _value;
+public:
+    SampleClazz() : _value(0)
+    {
+    }
+    property int Value
+    {
+        int get() { return this->_value; }
+    private:
+        void set(int value)
+        {
+            this->_value = value;
+        }
+    }
+    int _Value;
+};
+
+int main(stdcli::array&lt;String^&gt;^ args)
+{
+    SampleClazz sample;
+    sample.Value = 7;    // コンパイル・エラー
+    sample._Value = 10;  // プロパティ外にアクセサ指定子は影響しないので、publicメンバ
+    Console::WriteLine("Value : {0}", sample.Value);
+}
+</pre>
+<br />
+　この例では、セッターを private に指定しているので、外部からの Value プロパティへの値の代入はできません。<br />
+<br />
+<h3>プロパティとインターフェイスとジェネリクス</h3>
+<br />
+　この面白い組み合わせでいろいろとできます。<br />
+<br />
+<pre>
+public interface class IValue
+{
+    property int Value;
+};
+
+public interface class IA : IValue
+{
+};
+
+public interface class IB : IValue
+{
+};
+
+public ref class ClazzImpl : IA, IB
+{
+private:
+    int _value_a_impl;
+    int _value_b_inpl;
+
+public:
+    ClazzImpl() : _value_a_impl(0), _value_b_impl(0)
+    {
+    }
+
+    virtual property int VA
+    {
+        int get() override = IA::Value::get
+        {
+            return this->_value_a_impl;
+        }
+        void set(int value) override = IA::Value::set
+        {
+            this->_value_a_impl = value;
+        }
+    }
+    virtual property int VB
+    {
+        int get() override = IB::Value::get
+        {
+            return this->_value_b_impl;
+        }
+        void set(int value) override = IB::Value::set
+        {
+            this->_value_b_impl = value;
+        }
+    }
+};
+
+generic&lt;typename T&gt;
+    where T : IValue
+int AppendValue(T t, int incr)
+{
+    return t.Value + incr;
+}
+
+int main(stdcli::array&lt;String^&gt;^ args)
+{
+    ClazzImpl cls;
+    Console::WriteLine("Value A = {0}", AppendValue( safe_cast&lt;IA&gt;(cls),  5 ) );
+    Console::WriteLine("Value B = {0}", AppendValue( safe_cast&lt;IB&gt;(cls), 10 ) );
+    Console::WriteLine("Result A = {0}", cls.VA );
+    Console::WriteLine("Result B = {0}", cls.VB );
+}
+</pre>
+<br />
+　こんな感じに、データと操作の振る舞いを必要な形態に対して処理することが可能です。<br />
+<br />
+<hr />
+<br />
+<a href="#DocumentTop">Topに戻る</a><br />
+<br />
+<br />
+</div>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+
+<?xml-stylesheet type="text/xsl" href="show_gift.xslt" ?>
+
+<catalog>
+  <gift type="picture" from="黒い鳩">
+    <date>2006/02/14</date>
+    <sender site="http://www.geocities.jp/wswgr399/">黒い鳩</sender>
+    <link>/vene/gifts/kuro_hato/vt_2006.jpg</link>
+    <small width="64" height="78" />
+    <title>アリエッタ（from テイルズ・オブ・ジ・アビス）</title>
+    <description>黒い鳩さんからのバレンタイン・ギフトです。ありがとうございます。テイルズ・オブ・ジ・アビスより、アリエッタ嬢です。いつもありがとうございます。</description>
+  </gift>
+  <gift type="picture" from="黒い鳩">
+    <date>2005/12/22</date>
+    <sender site="http://www.geocities.jp/wswgr399/">黒い鳩</sender>
+    <link>/vene/gifts/kuro_hato/kuro_13.jpg</link>
+    <small width="64" height="78" />
+    <title>ハサハ（from サモンナイト２）</title>
+    <description>ちゃんと年末に届いていたのですが、遅ればせながら掲載させていただきます。黒い鳩さんからクリスマス・プレゼントです。黒い鳩さんのナデシコSS「光と闇に祝福を」に登場のアメジスト嬢。ありがたく飾らせていただきます。</description>
+  </gift>
+  <gift type="picture" from="黒い鳩">
+    <date>2005/08/31</date>
+    <sender site="http://www.geocities.jp/wswgr399/">黒い鳩</sender>
+    <link>/vene/gifts/kuro_hato/kuro_11.jpg</link>
+    <small width="64" height="78" />
+    <title>ハサハ（from サモンナイト２）</title>
+    <description>黒い鳩さんから残暑見舞いを頂きました。サモンナイト２より、ハサハ嬢です。フゥー！　本当にどうもありがとうございます。</description>
+  </gift>
+  <gift type="picture" from="黒い鳩">
+    <date>2005/07/02</date>
+    <sender site="http://www.geocities.jp/wswgr399/">黒い鳩</sender>
+    <link>/vene/gifts/kuro_hato/kuro_10.jpg</link>
+    <small width="49" height="70" />
+    <title>ホシノ・ルリ（from 機動戦艦ナデシコ）</title>
+    <description>黒い鳩さんから暑中見舞いにまたまた頂きました。ナデシコより、いわずもがなのホシノ・ルリです。浴衣はいい。浴衣はいいですねぇ。</description>
+  </gift>
+  <gift type="picture" from="黒い鳩">
+    <date>2005/05/05</date>
+    <sender site="http://www.geocities.jp/wswgr399/">黒い鳩</sender>
+    <link>/vene/gifts/kuro_hato/kuro_09.jpg</link>
+    <small width="64" height="78" />
+    <title>アティ＆ベルフラウ（from サモンナイト３）</title>
+    <description>黒い鳩さんから頂きました。サモンナイト３より、アティ嬢あーんど、ベルフラウ嬢です。ありがとうございます。</description>
+  </gift>
+</catalog>

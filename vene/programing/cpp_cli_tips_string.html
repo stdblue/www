@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"DTD/xhtml1-strict.dtd">
+
+<?xml-stylesheet href="/vene/css/illuminated.css" type="text/css" ?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+
+<head>
+	<title>啓発済み ： 文字列操作</title>
+
+	<!-- スタイルシート指定 -->
+	<link href="/vene/css/illuminated.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+
+#index
+{
+	position: absolute;
+	left: 20px; top: 80px;
+	width: 120px;
+	border: 1px none #8888f8;
+    border-top: 1px solid #8888f8;
+    border-left: 1px solid #8888f8;
+    border-right: 2px solid #666699;
+    border-bottom: 2px solid #666699;
+    padding: 5px 3px 3px 0.5em;
+}
+
+#docview
+{
+	position: absolute;
+	left: 150px; top: 80px;
+}
+
+.title
+{
+	border: 1px solid #8888f8;
+}
+
+pre
+{
+	border: 1px solid gray;
+	padding: 4px;
+	margin-right: 50px;
+	margin-left:  50px;
+	line-height: 140%;
+}
+
+</style>
+
+</head>
+
+<body bgcolor="#ffffff" text="black" >
+<br />
+<h2 align="center">C++/CLI 文字列操作</h2>
+<br />
+<div id="index">
+<div class="title" title="C++/CLI の紹介です"><a href="cpp_cli.html">電波襲来篇</a></div>
+<div class="title" title="C++/CLI の基本紹介です">基本解説篇</div>
+<div class="title" title="C++/CLI の機能紹介です"><a href="cpp_cli_bases.html">機能解説篇</a></div>
+<div class="title" title="C++/CLI の用語紹介です">用語集泥沼篇</div>
+<div class="title" title="C++/CLI の仕様書を翻訳しています"><a href="/cgi-bin/vene/wiki/wiki.cgi">仕様書ドラフト翻訳篇</a></div>
+<div class="title" title="C++/CLI の使用例"><a href="archives.html">統合アーカイブと一緒篇</a></div>
+<div class="title" title="C++/CLI の使用例">PDFLib-Lite<br /> ラッパーの脅威篇</div>
+<br />
+<div class="title" title="自作スクリプト言語"><a href="http://www.2log.net/home/mutons/">スクリプト言語まとん・ブログ</a></div>
+<div class="title"><a href="/vene/programing/mutons/">「まとん」まとめ</a></div>
+<br />
+<div class="title"><a href="/vene/programing.html">Back</a></div>
+<div class="title"><a href="/vene/IndexPage.aspx">Home</a></div>
+</div>
+
+<div id="docview">
+<a name="DocumentTop"></a>
+<h3>始めに</h3>
+　C++/CLI はおそらく旧来のライブラリを .net のアセンブリに変更されるのに一番利用されると考えています。<br />
+　そのとき、一番面倒なのは、旧来の MBCS や wchar_t 型と System::String をどうやりとりすればいいのかという点です。<br />
+<br />
+　ここでは、MultiByte ないし、 WideChar の System::String 型とのやりとりについて記述しておきます。<br />
+<br />
+<h3>MultiByte から System::String に</h3>
+　これは特に問題も疑問の余地もないですよね。<br />
+<pre>
+std::string text = "サンプル・テキスト";  // めんどくさいので char * はこれで代用
+String^ textString = gcnew String(text.c_str());
+
+String^ textString = Marshal::PtrToStringAnsi(text.c_str());  // Marshal を使うとこれ
+</pre>
+<br />
+<h3>WideChar から System::String に</h3>
+　これも特に疑念の余地はありませんよね。<br />
+<pre>
+std::wstring wide_text = L"ワイド文字列";  // めんどくさいので wchar_t * はこれで代用
+String^ textString = gcnew String(wide_text.c_str());
+
+String^ textString = Marshal::PtrToStringUni(wide_text.c_str());  // Marshal を使うとこれ
+</pre>
+<br />
+　Marshal クラスにはそのほかに BSTR 用の PtrToStringBSTR や 自動識別の PtrToStringAuto も用意されています。TCHAR を使っているときは、PtrToStringAuto を使った方が便利でしょう。<br />
+<br />
+<h3>System::String 型から MultiByte に</h3>
+　ここから段々と面倒な手続きが必要になってきます。<br />
+　キーワードは、ピンニング、マーシャル・アズです。<br />
+　追加で、System.Runtime.InteropServices の <a href="http://www.microsoft.com/japan/msdn/library/default.asp?url=/japan/msdn/library/ja/cpref/html/frlrfSystemRuntimeInteropServicesMarshalClassTopic.asp">Marshal クラス</a>を見ておくといろいろと便利です。<br />
+<pre>
+std::string text;  // 文字列を受け止めるバッファ
+String^ textString = gcnew String("適当なサンプル文字列");  // 変換する文字列
+
+// System::String をChar 型 = wchar_t 型の配列にする
+array&lt;Char&gt;^ warr = textString->ToCharArray();
+
+// 配列がガベージ・コレクトによって移動しないようピンニング
+pin_ptr&lt;Char&gt; wptr = &warr[0];
+
+// 変換後文字サイズを取得
+char *buffer = 0;
+int len = ::WideCharToMultiByte(CP_UTF8, 0, wptr, num, buffer, 0, NULL, NULL);
+if ( len > 0 ) {
+
+    // 文字バッファを取得して
+    buffer = new char[len + 1];
+    memset(buffer, 0, len+1);
+
+    // UNICODE を MultiByte に変換
+    ::WideCharToMultiByte(CP_UTF8, 0, wptr, num, buffer, len, NULL, NULL);
+
+    // バッファをMultiByteの文字型に代入
+    text = buffer;
+    if ( buffer ) delete [] buffer;
+}
+</pre>
+<br />
+　もっといい方法が .NET Framework 2.0 では提供されていました。<br />
+<pre>
+std::string text;  // 文字列を受け止めるバッファ
+String^ textString = gcnew String("適当なサンプル文字列");  // 変換する文字列
+
+IntPtr mptr = Marshal::StringToHGlobalAnsi(textString);
+
+text = static_cast&lt;const char*&gt;(mptr.ToPointer());
+Marshal::FreeHGlobal(mptr);
+
+</pre>
+<br />
+<h3>System::String 型から WideChar 型に</h3>
+　これはちょっと微妙。どうやってコピーするかによると思う。<br />
+　基本的にはピンニングして、コピーすればいい。<br />
+<pre>
+String^ textString = gcnew String("適当なサンプル文字列");  // 変換する文字列
+
+// System::String をChar 型 = wchar_t 型の配列にする
+array&lt;Char&gt;^ warr = textString->ToCharArray();
+
+// 配列がガベージ・コレクトによって移動しないようピンニング
+pin_ptr&lt;Char&gt; wptr = &warr[0];
+
+// 文字列を受け止めるバッファ
+std::wstring wide_text(wptr);
+</pre>
+<pre>
+String^ textString = gcnew String("適当なサンプル文字列");  // 変換する文字列
+
+IntPtr wptr = Marshal::StringToHGlobalUni(textString);
+
+// 文字列を受け止めるバッファ
+std::wstring wide_text(static_cast&lt;const wchar_t*&gt;(wptr.ToPointer()));
+
+Marshal::FreeHGlobal(wptr);
+</pre>
+<br />
+<h3>System::String 型から TCHAR 型に</h3>
+　MFC ないし、ATL(WTL) の CString を使ってまとめて書くと次のようになります。<br />
+<pre>
+String^ textString = gcnew String("適当なサンプル文字列");  // 変換する文字列
+
+IntPtr tptr;
+
+#ifdef _UNICODE
+tptr = Marshal::StringToHGlobalUni(textString);
+#else
+tptr = Marshal::StringToHGlobalAnsi(textString);
+#endif
+
+CString result_text = (LPCTSTR)tptr.ToPointer();
+
+Marshal::FreeHGlobal(tptr);
+</pre>
+　すごく簡単ですね。<br />
+<!--
+　相手が LPTSTR や LPCTSTR の時は、あまり難しく考えずに、
+<pre>
+String^ textString = gcnew String("適当なサンプル文字列");  // 変換する文字列
+
+IntPtr tptr = Marshal::StringToHGlobalAuto(textString);
+
+// 文字列を受け止めるバッファ
+CString buff = tptr;
+
+Marshal::FreeHGlobal(tptr);
+</pre>
+でいいのかもしれません。<br />
+  -->
+<br />
+　これで基本的な置き換えはおっけーです。<br />
+（´-｀）.｡oO(そういえば、marshall_as&lt;&gt; はどこへ行ってしまったのだろう？)<br />
+（´-｀）.｡oO(なるほど、System.Runtime.InteropServices.Marshal になったわけか…)<br />
+<br />
+<hr />
+<br />
+<a href="#DocumentTop">Topに戻る</a><br />
+<br />
+<br />
+</div>
+
+</body>
+</html>

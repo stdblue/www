@@ -1,0 +1,16 @@
+body
+{
+	margin-left: 10%;
+	margin-right: 10%;
+	line-height: 1.6;
+}
+
+.logo
+{
+	font-weight: normal;
+	font-family: "Haettenschweiler", monospace;
+	font-size: 12pt;
+	letter-spacing: 1pt;
+	text-shadow: red 2px 3px 4px, 5px 6px;
+	vertical-align: top;
+}

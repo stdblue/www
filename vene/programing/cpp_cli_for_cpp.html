@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"DTD/xhtml1-strict.dtd">
+
+<?xml-stylesheet href="/vene/css/illuminated.css" type="text/css" ?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+
+<head>
+	<title>啓発済み ： C++ プログラマのための C++/CLI 講座</title>
+
+	<!-- スタイルシート指定 -->
+	<link href="/vene/css/illuminated.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+
+#index
+{
+	position: absolute;
+	left: 20px; top: 80px;
+	width: 120px;
+	border: 1px none #8888f8;
+    border-top: 1px solid #8888f8;
+    border-left: 1px solid #8888f8;
+    border-right: 2px solid #666699;
+    border-bottom: 2px solid #666699;
+    padding: 5px 3px 3px 0.5em;
+}
+
+#docview
+{
+	position: absolute;
+	left: 150px; top: 80px;
+}
+
+pre
+{
+	border: 1px solid gray;
+	padding: 4px;
+}
+
+</style>
+
+</head>
+
+<body bgcolor="#ffffff" text="black" >
+<br />
+<h2>C++ プログラマのための C++/CLI 講座</h2>
+<br />
+<div id="index">
+<div class="title" title="C++/CLI の紹介です"><a href="cpp_cli.html">電波襲来篇</a></div>
+<div class="title" title="C++/CLI の基本紹介です">基本解説篇</div>
+<div class="title" title="C++/CLI の機能紹介です"><a href="cpp_cli_bases.html">機能解説篇</a></div>
+<div class="title" title="C++/CLI の用語紹介です">用語集泥沼篇</div>
+<div class="title" title="C++/CLI の仕様書を翻訳しています"><a href="/cgi-bin/vene/wiki/wiki.cgi">仕様書ドラフト翻訳篇</a></div>
+<div class="title" title="C++/CLI の使用例"><a href="archives.html">統合アーカイブと一緒篇</a></div>
+<div class="title" title="C++/CLI の使用例">PDFLib-Lite<br /> ラッパーの脅威篇</div>
+<br />
+<div class="title" title="自作スクリプト言語"><a href="http://www.2log.net/home/mutons/">スクリプト言語まとん・ブログ</a></div>
+<div class="title"><a href="/vene/programing/mutons/">「まとん」まとめ</a></div>
+<br />
+<div class="title"><a href="/vene/programing.html">Back</a></div>
+<div class="title"><a href="/vene/IndexPage.aspx">Home</a></div>
+</div>
+
+<div id="docview">
+<a name="DocumentTop"></a>
+<h3>前書き</h3>
+<br />
+　マイクロソフト社が IBM や Intel、Borland などの会社と共同で標準化した C++/CLI の実装が VisualStudio 2005 の公開と共に利用できるようになりました。しかし、その実践的な資料は少なく、いざ、C++/CLI を使おうと思っても、何を使えば、どう C++/CLI なのか、よくわからないというのが一般的なのではないかと思います。<br />
+　そこでここでは、一般的な C++ プログラマが C++/CLI を機に .net Framework に手を出すための手助けとなるよう、基本的な考え方と、C++/CLI の特徴構文、そして、注意するべき点を記述していこうと思います。<br />
+<br />
+<h3>アセンブリ：アプリケーションのドメイン</h3>
+<br />
+　アセンブリとは物理的なもので言えば DLL です。<br />
+　アプリケーションはエントリ・ポイント（起動位置）を持つアセンブリです。exe と DLL の違いが、OS からの起動位置の有無のみと言うシンプルな構成になるわけです。<br />
+　ですが、わざわざ名前を変えて呼ぶ意味があるのか、と言うことが問題となります。<br />
+　スタティック・リンク・ライブラリやダイナミック・リンク・ライブラリとどれほどの違いがあるというのか。<br />
+　ちょっと言語を拡張してみたから名前を変えてみただけ、などと言ったら大爆笑です。正直石をぶつけたくなります。<br />
+<br />
+　ですが、さすがにそんなことはありません。<br />
+　アセンブリには DLL と違い、公開型情報＝メタデータが埋め込まれているのです。<br />
+　.net Framework／CLI標準では、アセンブリという物理単位にそれ自体が外部に提供する型情報を保持する規格が制定されています。これは C++/CLI においても同様に<a href="http://www.stdblue.net/cgi-bin/vene/wiki/wiki.cgi?page=D%2D1%2E14+34%2E%A5%E1%A5%BF%A5%C7%A1%BC%A5%BF">メタデータの章</a>で規格化されています。<br />
+<br />
+　メタデータを持つことによって、C++/CLI で作成されたアセンブリは、多の言語で作成されたアプリケーションからも、ヘッダやスタティック・ライブラリのような C++ に依存した型情報を利用することなく、自由に使用できるようになります。<br />
+　当然の事ながら、C++/CLI では、他のアセンブリを利用するときヘッダや静的ライブラリを必要としません。<br />
+<pre>
+#using "XXXXXXXX.dll"
+or
+#using <XXXXXXXX.dll>
+</pre>
+と、指定することで、指定のアセンブリのメタデータを取得し、型として利用することができるのです。<br />
+　このアセンブリの中の型は全て public、ないし、private の<a href="http://www.stdblue.net/cgi-bin/vene/wiki/wiki.cgi?page=D%2D1%2E14+12%2E%B7%BF">上層型認識(Top-Level Visibility、第１２章４節)</a>を持っています。<br />
+　明示的に public の型を指定していないクラスは全て private です。<br />
+　これらの変更によって、DLL の外部参照関数はアセンブリ中には存在できなくなります。<br />
+　アセンブリからグローバル関数を提供したい場合には、何らかのユーティリティ・クラスでその関数を囲んで、クラスの静的メンバ関数として公開してください。<br />
+<br />
+　仕様上、<a href="http://www.stdblue.net/cgi-bin/vene/wiki/wiki.cgi?page=D%2D1%2E14+20%2E%A5%CD%A5%A4%A5%C6%A5%A3%A5%D6%A1%A6%A5%AF%A5%E9%A5%B9">ネイティブ・クラス</a>も上層型認識持つんだけど、他の言語から C++ のネイティブ・クラスが利用できるなんて事、ないよね。あとで試してみます。<br />
+<br />
+<br />
+<h3>C++ ネイティブと追加されたいろいろな型</h3>
+<br />
+　C++/CLI では、CLI ヒープと呼ばれるメモリ領域が追加されています。<br />
+　この CLI ヒープを利用する型はライフサイクルを仮想実行システム＝VES（.net Framework の場合には CLR）が管理します。<br />
+　この CLI ヒープ上のオブジェクトと区別して、これまでの C++ のオブジェクトをネイティブ・オブジェクトと呼ぶことになりました。それに対して、CLI ヒープ上のオブジェクトをマネージド・オブジェクト（委託オブジェクト）と呼びます。<br />
+<br />
+　C++/CLI では統一型システムという、すべてのクラスが System::Object 型の派生クラスであるというルールが導入されています。これは、これまでの C++ のネイティブ型、値型、列挙型も従うことになります。<br />
+　ただ、パフォーマンスを稼ぐために、ネイティブ型は System::Object のメソッドを適用されない限り、値型としては扱われません。<br />
+<pre>
+int a = 5;
+Console::WriteLine(a.ToString());
+</pre>
+　int 型の a は宣言され代入される間は、ネイティブ型として扱われます。これに対し、System::Object 型のメソッド ToString が呼び出された段階で、System::Object 型の派生型である System::ValueType であると認識され、メソッドが実行されます。<br />
+　もし、メソッドが適用されない場合には、int 値 a はただのネイティブ型の値として以後ずっと扱われます。<br />
+<br />
+　
+<br />
+<h3>まとめ</h3>
+
+<br />
+<hr />
+<br />
+<a href="#DocumentTop">Topに戻る</a><br />
+<br />
+<br />
+</div>
+
+</body>
+</html>

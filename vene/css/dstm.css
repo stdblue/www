@@ -1,0 +1,66 @@
+<!-- タグ・スタイル -->
+body {
+	margin-left:  5%;
+	margin-right: 5%;
+
+	line-height: 160%;
+}
+
+h2 {
+	font-style: italic;
+}
+
+table {
+	empty-cells: show;
+}
+
+tr {
+	vertical-align: top;
+}
+
+th {
+	text-align: right;
+}
+
+<!-- クラス・スタイル -->
+.genre {
+	margin-top: 4pt;
+	font-size: 11pt;
+	font-weight: bold;
+	font-family: '平成明朝', 'Times', serif;
+}
+
+.title {
+	margin-top: 2pt;
+	margin-left: 10pt;
+	font-size: 9pt;
+	font-family: 'Osaka－等幅', 'ＭＳ Ｐ明朝', 'Ariel', cursive;
+}
+
+.term {
+	margin-top: 2pt;
+	margin-left: 20pt;
+	font-size: 9pt;
+	font-family: '細明朝体', 'ＭＳ Ｐゴシック', 'Times New Roman', serif;
+}
+
+.description {
+	font-size: 10pt;
+	font-family: '平成明朝', 'Times', serif;
+	line-height: 160%;
+}
+
+<!-- ID スタイル -->
+
+#docview {
+	position: absolute;
+	width:90%;
+
+	font-family: 'ＭＳ 明朝', 'Times New Roman', serif;
+	font-size: 10pt;
+}
+
+#titlepoll {
+	width:20%;
+}
+

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"DTD/xhtml1-strict.dtd">
+
+<?xml-stylesheet href="/vene/css/illuminated.css" type="text/css" ?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+
+<head>
+	<title>啓発済み ： Mutons the programing language define of constants</title>
+
+	<!-- スタイルシート指定 -->
+	<link href="/vene/css/illuminated.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+
+#index
+{
+	position: absolute;
+	left: 20px; top: 80px;
+	width: 120px;
+	border: 1px none #8888f8;
+    border-top: 1px solid #8888f8;
+    border-left: 1px solid #8888f8;
+    border-right: 2px solid #666699;
+    border-bottom: 2px solid #666699;
+    padding: 5px 3px 3px 0.5em;
+}
+
+#docview
+{
+	position: absolute;
+	left: 150px; top: 80px;
+}
+
+</style>
+
+</head>
+
+<body bgcolor="#ffffff" text="black" >
+<br />
+<h2>スクリプト言語まとん：演算定義</h2>
+<br />
+<div id="index">
+<div class="title"><a href="http://www.2log.net/home/mutons/">ブログ</a></div>
+<div class="title"><a href="language_define.html">言語仕様</a></div>
+<br />
+<div class="title"><a href="lang_def_constants.html">定数定義</a></div>
+<div class="title"><a href="lang_def_identifier.html">識別子定義</a></div>
+<div class="title">演算定義</div>
+<div class="title"><a href="lang_def_declareration.html">宣言定義</a></div>
+<div class="title"><a href="lang_def_statements.html">構文定義</a></div>
+<div class="title"><a href="lang_def_comments.html">コメント定義</a></div>
+<br />
+<br />
+<div class="title"><a href="/vene/mutons/index.html">Back</a></div>
+<div class="title"><a href="/vene/IndexPage.aspx">Home</a></div>
+</div>
+
+<div id="docview">
+<h3>演算</h3>
+<br />
+<dl>
+<dt>前置演算子</dt>
+<dd>
+:= "+" | "-" | "!" | "~"<br />
+;<br />
+</dd>
+<br />
+<dt>代入演算子</dt>
+<dd>
+:= "=" | "+=" | "-=" | "*=" | "/=" | "%="<br />
+;<br />
+</dd>
+<br />
+<dt>基本演算</dt>
+<dd>
+:=	識別子<br />
+|	定数<br />
+|	'(' 演算 ')'<br />
+;<br />
+</dd>
+<br />
+<dt>後置演算</dt>
+<dd>
+:=	基本演算 後置演算修飾子<br />
+;<br />
+</dd>
+<dt>後置演算修飾子</dt>
+<dd>
+:=	( '[' 演算 ']'<br />
+	| '(' パラメータ配列? ')'<br />
+	| '++'<br />
+	| '--'<br />
+	) 後置演算修飾子<br />
+| e<br />
+;<br />
+</dd>
+<dt>単項演算</dt>
+	:=	後置演算
+	|	"++" 単項演算
+	|	"--" 単項演算
+	|	単項演算子 キャスト演算
+	;
+	
+単項演算子
+	:= '+' | '-'
+	;
+
+キャスト演算
+	:=	'(' 型宣言キーワード ')' キャスト演算
+	|	単項演算
+	;
+	
+パラメータ配列
+	:=	代入演算 ( ',' 代入演算 )*
+
+代入演算
+	:=	識別子 代入演算子 ( 定数 | 識別子 )
+	|	識別子 代入演算子 演算
+	;
+</pre>
+<br />
+<hr />
+<br />
+</div>
+</body>
+</html>

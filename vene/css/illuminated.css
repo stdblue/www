@@ -1,0 +1,46 @@
+body {
+	margin-right: 5%;
+	margin-left:  5%;
+
+	color: #202020;
+	background-color: white;
+
+	line-height: 160%;
+}
+
+a:hover {
+}
+
+.titlebox {
+	position: absolute;
+	top: 300px;
+	width: 80px;
+}
+
+.heading {
+	line-height: 180%;
+	text-align: center;
+	font-size: 14px;
+	font-family: HGŠÛºŞ¼¯¸M-PRO, MSƒSƒVƒbƒN, Monospace
+}
+
+.title {
+	font-size: 12px;
+	font-family: 'Osaka|“™•', '‚l‚r ‚o–¾’©', 'Ariel', cursive;
+}
+
+.abstract {
+	font-size: 9pt;
+	font-family: 'Osaka|“™•', '‚l‚r ‚o–¾’©', 'Ariel', cursive;
+}
+
+.last {
+	margin-left: 10px;
+
+	font-size: 9pt;
+	font-family: '×–¾’©‘Ì', '‚l‚r ‚oƒSƒVƒbƒN', 'Times New Roman', serif;
+}
+
+.links {
+	margin-left: 100px;
+}

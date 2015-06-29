@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"DTD/xhtml1-strict.dtd">
+
+<?xml-stylesheet href="/vene/css/illuminated.css" type="text/css" ?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+
+<head>
+	<title>啓発済み ： C++/CLI 電波襲来</title>
+
+	<!-- スタイルシート指定 -->
+	<link href="/vene/css/illuminated.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+
+#index
+{
+	position: absolute;
+	left: 20px; top: 80px;
+	width: 120px;
+	border: 1px none #8888f8;
+    border-top: 1px solid #8888f8;
+    border-left: 1px solid #8888f8;
+    border-right: 2px solid #666699;
+    border-bottom: 2px solid #666699;
+    padding: 5px 3px 3px 0.5em;
+}
+
+#docview
+{
+	position: absolute;
+	left: 150px; top: 80px;
+}
+
+</style>
+
+</head>
+
+<body bgcolor="#ffffff" text="black" >
+<br />
+<h2>C++/CLI 電波襲来篇</h2>
+<br />
+<div id="index">
+<div class="title" title="C++/CLI の紹介です">電波襲来篇</div>
+<div class="title" title="C++/CLI の基本紹介です">基本解説篇</div>
+<div class="title" title="C++/CLI の機能紹介です"><a href="cpp_cli_bases.html">機能解説篇</a></div>
+<div class="title" title="C++/CLI の用語紹介です">用語集泥沼篇</div>
+<div class="title" title="C++/CLI の仕様書を翻訳しています"><a href="/cgi-bin/vene/wiki/wiki.cgi">仕様書ドラフト翻訳篇</a></div>
+<div class="title" title="C++/CLI の使用例"><a href="archives.html">統合アーカイブと一緒篇</a></div>
+<div class="title" title="C++/CLI の使用例">PDFLib-Lite ラッパーの脅威篇</div>
+<br />
+<div class="title" title="自作スクリプト言語"><a href="http://www.2log.net/home/mutons/">スクリプト言語まとん・ブログ</a></div>
+<div class="title"><a href="/vene/programing/mutons/">「まとん」まとめ</a></div>
+<br />
+<div class="title"><a href="/vene/programing.html">Back</a></div>
+<div class="title"><a href="/vene/IndexPage.aspx">Home</a></div>
+</div>
+
+<div id="docview">
+　C++/CLI とは、マイクロソフト社が現在、ECMA、ISO に仕様提出中の C++ に対する CLI 拡張言語です。<br />
+　マイクロソフト社は .Net Framework という CLR 上での Windows 操作フレームワークを元に OS の再構築を進めています。それが、<a href="http://msdn.microsoft.com/longhorn/">Code named "Longhorn" </a>と呼ばれている OS です。<br />
+　この OS では、OS 操作の基本となる API が WinFX というマネージド環境に基づく API への移行がすでに決定されております。マネージド環境は OLE - COM - COM+ と面々と繋がるオブジェクトのライフサイクルの管理という問題にガベージ・コレクトという形で管理しようという物で、ここで生成されたオブジェクトはその削除を CLR に管理されることとなります。そのため、マネージド、すなわち、オブジェクトの委託済みと呼ばれています。<br />
+　それに対して、旧来からの C/C++ で直接、プログラム・モジュールの仮想メモリにアクセスするやり方はネイティブとして、危険なメモリ操作が可能なプログラミングとして、敬遠されつつあります。<br />
+　ですが、果たして、ネイティブな言語は厄介者扱いされるような存在なのでしょうか。<br />
+　そんなことはありません。<br />
+　メモリ管理の問題や、リソース管理は本来、慎重な設計の元、プログラマ自身が管理するべき物であり、ガベージ・コレクトされることを期待して作るようなプログラミングはお行儀がよいものとは思えません。また、ネイティブなメモリ管理は処理速度が速く振る舞いが決定的で、なにより何でもできます。<br />
+　そんなマネージドとネイティブの双方の良さを併せ持った言語として、C++ の CLI 拡張言語 C++/CLI は設計されました。<br />
+　現在、未だベータ段階であり、基本機能の実装も終了しておりませんが、それを上回る魅力を感じさせてくれます。<br />
+　ヽ(ﾟ∀｡)ﾉうぇね的には正直、 C# はもういらない、と言うくらいに、 C++/CLI の .Net Framework との親和性は高く、auto 変数並みにマネージド・オブジェクトを作っては捨てることができる楽さにくらくらです。<br />
+　.Net Framework はいい加減、勉強しないといけないけど、Java と似たような言語を勉強し直すのは嫌だな、とか、何でも良いから C++ で組ませろと言う方、そんな方のために、 C++/CLI があります。<br />
+<br />
+　さぁ、やけになって、始めてみましょう。<br />
+　だんだん、何となく、楽しくなってくるような気がしますよ。<br />
+<br />
+<hr />
+<br />
+</div>
+</body>
+</html>

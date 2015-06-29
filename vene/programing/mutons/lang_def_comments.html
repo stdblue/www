@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"DTD/xhtml1-strict.dtd">
+
+<?xml-stylesheet href="/vene/css/illuminated.css" type="text/css" ?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+
+<head>
+	<title>啓発済み ： Mutons the programing language define of comment</title>
+
+	<!-- スタイルシート指定 -->
+	<link href="/vene/css/illuminated.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+
+#index
+{
+	position: absolute;
+	left: 20px; top: 80px;
+	width: 120px;
+	border: 1px none #8888f8;
+    border-top: 1px solid #8888f8;
+    border-left: 1px solid #8888f8;
+    border-right: 2px solid #666699;
+    border-bottom: 2px solid #666699;
+    padding: 5px 3px 3px 0.5em;
+}
+
+#docview
+{
+	position: absolute;
+	left: 150px; top: 80px;
+}
+
+</style>
+
+</head>
+
+<body bgcolor="#ffffff" text="black" >
+<br />
+<h2>スクリプト言語まとん：コメント</h2>
+<br />
+<div id="index">
+<div class="title"><a href="http://www.2log.net/home/mutons/">ブログ</a></div>
+<div class="title"><a href="language_define.html">言語仕様</a></div>
+<br />
+<div class="title"><a href="lang_def_constants.html">定数定義</a></div>
+<div class="title"><a href="lang_def_identifier.html">識別子定義</a></div>
+<div class="title"><a href="lang_def_expression.html">演算定義</a></div>
+<div class="title"><a href="lang_def_declareration.html">宣言定義</a></div>
+<div class="title"><a href="lang_def_statements.html">構文定義</a></div>
+<div class="title">コメント定義</div>
+<br />
+<div class="title"><a href="/vene/mutons/index.html">Back</a></div>
+<div class="title"><a href="/vene/IndexPage.aspx">Home</a></div>
+</div>
+
+<div id="docview">
+<h3>コメント</h3>
+<br />
+　まとんは C++ と同じコメントを持つ。<br />
+　また、加えて /-- ... --/ という区切り型のコメントも有効である。<br />
+<br />
+<h4>Examples:</h4>
+<pre>
+// これは通常のライン・コメント
+
+/*　複数行コメントも有効。
+　　これでいろいろとサマリーが書けます。
+ */
+
+/-- シフト・キーを押すのが面倒なので、
+　　このコメント形式も有効です。
+ --/
+</pre>
+<br />
+<dl>
+<dt>コメント</dt>
+<dd>:= 　"//" ( 任意文字 - 行端 )<br />
+|　　"/--" ( 任意文字 - "--/" )* "--/"<br />
+|　　"/*" ( 任意文字 - "*/" )* "*/"<br />
+;<br />
+</dd>
+</dl>
+<br />
+<hr />
+<br />
+</div>
+</body>
+</html>

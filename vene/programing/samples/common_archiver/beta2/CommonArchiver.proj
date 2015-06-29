@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+<Target Name="Build">
+</Target>
+
+<Target Name="Clean">
+</Target>
+
+<Target Name="ReBuild">
+</Target>
+
+</Project>

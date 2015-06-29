@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+
+<head>
+	<title>Re-Genesis on Site</title>
+
+<!-- Effect 用 JavaScript -->
+    <script src="http://www.stdblue.net/script/prototype.js" type="text/javascript"></script>
+    <script src="http://www.stdblue.net/script/effects.js" type="text/javascript"></script>
+
+<style type="text/css">
+
+h4
+{
+	font-family: Verdana, Arial, sans-serif;
+    font-size:12px;
+    margin:10px 10%;
+    padding:1px 25px;
+}
+
+.title
+{
+	color: #555555;
+	font-family: "Century Gothic", Arial, sans-serif;
+	font-size: 18pt;
+}
+
+.toc
+{
+	font-family: "Lucida Console", Verdana, monospace;
+	font-size: x-small;
+	line-height: 1.4;
+}
+
+.textarea
+{
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+.chapter
+{
+	color: #555555;
+	font-family: "Century Gothic", Arial, sans-serif;
+	font-size: small;
+	text-align: center;
+}
+
+.lastletter
+{
+	text-align: right;
+	font-size: x-small;
+	font-family: Gulim, "ＭＳ Ｐゴシック", Osaka, Century, sans-serif;
+}
+
+.footer
+{
+	text-align: right;
+	font-size: x-small;
+	font-family: Verdana, Osaka, Arial, monospace;
+}
+
+.partlist
+{
+	margin-left: 30px;
+	font-family: Verdana, Osaka, Arial, monospace;
+	font-size: 12px;
+    border-top: 1px dashed #000;
+}
+
+dl
+{
+	width: 360px;
+	font-size: 12px;
+}
+
+dl dt
+{
+	color: #FFFFFF;
+	background-color: #6A6A6C;
+	font-family: "Century Gothic", Arial, sans-serif;
+	font-weight: bold;
+	letter-spacing: 0.2em;
+	width: 230px;/*タイトルの幅*/
+	padding: 2px 1em 2px 1.5em;
+	background-image: url("images/024_gray.gif");
+	background-repeat: no-repeat;
+}
+
+dl dd
+{
+	color: #313132;
+	margin: 0;
+	padding: 0;
+	border: solid 1px #6A6A6E;
+}
+
+dl dd .contbox
+{
+	padding: 1.2em 0.9em;
+	border-top: solid 4px #DADADC;
+	border-bottom: solid 4px #DADADC;
+}
+
+#monologue
+{
+	text-align: center;
+	font-family: "ＭＳ Ｐ明朝", "平成明朝", Helvetica, serif;
+	line-height: 1.6;
+}
+
+#prologue
+{
+	display: none;
+}
+
+#the1st
+{
+	display: none;
+}
+
+#disastrous
+{
+	display: none;
+}
+
+#the2nd
+{
+	display: none;
+}
+
+#the3rd
+{
+	display: none;
+}
+
+#the4th
+{
+	display: none;
+}
+
+a
+{
+	color: blue;
+	text-decoration: none;
+}
+
+a:active
+{
+	text-decoration: none;
+	color: blue;
+}
+
+a:visited
+{
+	text-decoration: none;
+	color: blue;
+}
+
+a:hover
+{
+	text-decoration: none;
+	color: blue;
+	background-color: #e0e0e0;
+}
+
+</style>
+
+<script type="text/javascript" language="JavaScript">
+
+var names = new Array();
+names[0] = 'prologue';
+names[1] = 'the1st';
+names[2] = 'disastrous';
+names[3] = 'the2nd';
+names[4] = 'the3rd';
+names[5] = 'the4th';
+names[6] = 'monologue';
+
+function select_view(name)
+{
+
+	for ( var i=0; i<7; i++ )
+	{
+		set_visible(names[i], 'none');
+	}
+
+	set_visible(name, 'block');
+}
+
+function set_visible(name, visibility)
+{
+	if ( document.all )
+	{
+		document.all(name).style.display = visibility;
+	}
+	else if ( document.getElementById )
+	{
+		$(name).style.display = visibility;
+	}
+}
+
+function apply_effect(name)
+{
+	Effect.toggle(name, 'appear');
+	return false;
+}
+
+</script>
+
+</head>
+
+<body scroll="no">
+<!--shinobi1-->
+<!--
+<script src="http://j5.shinobi.jp/ufo/047414903"></script>
+<noscript><a href="http://x5.shinobi.jp/bin/gg?047414903" target="_blank">
+<img src="http://x5.shinobi.jp/bin/ll?047414903" border=0></a><br>
+<a style="font-size:80%" href="http://www.shinobi.jp/" target="_blank">レンタルチャット</a></noscript>
+-->
+<!--shinobi2-->
+
+<table width="100%" height="90%" cellspacing="0" cellpadding="0">
+<tr height="30%">
+  <td width="240" align="right" valign="bottom" class="title"> R e - G e n e s i s </td>
+  <td rowspan="2" valign="center">
+<div class="textarea">
+<noscript>
+<span style="color: red; font-weight:bold;">注意：</span><br />
+　このサイトは JavaScript を ON にする必要があります。<br />
+　読めない人は、<a href="regen_top.html">こちら</a>の旧インデックスへどうぞ。<br />
+<br />
+</noscript>
+<div id="monologue">
+　<ruby><rb>時代を造り変える</rb><rp>(</rp><rt>Re-Genesis</rt><rp>)</rp></ruby> <br />
+　私たちは彼のその言葉を信じた <br />
+　あのとき、彼が出した答えは <br />
+　逃げだったのかも知れない <br />
+　でも、今度は、今度こそは <br />
+　それがどれほど困難だったとしても <br />
+　私たちは、時代を造り替える <br />
+　そして、大切なあの人に <br />
+　あのとき、と違った答えを <br />
+　・・・捧げたい <br />
+<br />
+</div>
+<div id="prologue">
+<h3 class="chapter">Prologue ：喪失</h3>
+<div class="partlist" style="text-align:center;">
+<a href="re-genesis00.html" title="やっぱ、ランダムジャンプでしょ">プロローグ</a>
+</div>
+</div>
+
+<div id="the1st">
+<h3 class="chapter">第一部：故郷と呼べる場所</h3>
+
+<h4 onclick="return apply_effect('story01');" style="text-align:left;" >第一話「男らしく」</h4>
+<div id="story01" class="partlist" style="text-align:left;">
+<a href="re-genesis01a.html" title="「男らしく行く前」に「わたし少女です」"
+	>　A　</a>
+<a href="re-genesis01b.html" title="「男らしく」行く前に「生は暗く」"
+	>　B　</a>
+<a href="re-genesis01c.html" title="「男らしく」行く前に「出航、まだですか」"
+	>　C　</a>
+<a href="re-genesis01d.html" title="「男らしく」行く前に「死はなお暗い」"
+	>　D　</a>
+</div>
+
+<h4 onclick="return apply_effect('story02');" style="text-align:right;" >第二話「緑の地球は」</h4>
+<div id="story02" class="partlist" style="text-align:right;">
+<a href="re-genesis02a.html" title="「緑の地球」は任せとけ「誰に、ですか」"
+	>　A　</a>
+<a href="re-genesis02b.html" title="「緑の地球」は「遙か」"
+	>　B　</a>
+<a href="re-genesis02c.html" title="「緑の地球」は「再会のために」"
+	>　C　</a>
+<a href="re-genesis02d.html" title="「緑の地球」はまかせとけ「いってらっしゃい」"
+	>　D　</a>
+<a href="re-genesis02e.html" title="「緑の地球」は「後は任せましたから」「あの？」"
+	>　E　</a>
+<a href="re-genesis02f.html" title="「緑の地球」に「あばよ」"
+	>　F　</a>
+<a href="re-genesis02g.html" title="「緑の地球」に「お別れだ」"
+	>　G　</a>
+</div>
+
+<h4 onclick="return apply_effect('story03');" style="text-align:left;" >第三話「さよなら」</h4>
+<div id="story03" class="partlist" style="text-align:left;">
+<a href="re-genesis03a.html" title="「さよなら」はいつも早すぎる"
+	>　A　</a>
+<a href="re-genesis03b.html" title="早すぎる「さよなら」をしよう"
+	>　B　</a>
+<a href="re-genesis03c.html" title="「さよなら」を言うのは早すぎる"
+	>　C　</a>
+<a href="re-genesis03d.html" title="「さよなら」が聞こえる"
+	>　D　</a>
+<a href="re-genesis03e.html" title="早すぎた「さよなら」"
+	>　E　</a>
+</div>
+
+<h4 onclick="return apply_effect('story04');" style="text-align:right;" >第四話「ときめき」</h4>
+<div id="story04" class="partlist" style="text-align:right;">
+<a href="re-genesis04a.html" title="南海気分で「ときめき」"
+	>　A　</a>
+<a href="re-genesis04b.html" title="のんびり宇宙で「ときめき」"
+	>　B　</a>
+<a href="re-genesis04c.html" title="赤い大地に「ときめき」できるかっ！"
+	>　C　</a>
+<a href="re-genesis04d.html" title="絶対真空で「ときめき」「いま、忙しいんです」"
+	>　D　</a>
+<a href="re-genesis04e.html" title="南海夕日に「ときめき」"
+	>　E　</a>
+<a href="re-genesis04f.html" title="大漁宇宙で「ときめき」？"
+	>　F　</a>
+</div>
+
+<h4 onclick="return apply_effect('story05');" style="text-align:left;" >第五話「航宙日誌」</h4>
+<div id="story05" class="partlist" style="text-align:left;">
+<a href="re-genesis05a.html" title="索敵の「航宙日誌」"
+	>　A　</a>
+<a href="re-genesis05b.html" title="大きなルリの「航宙日誌」"
+	>　B　</a>
+<a href="re-genesis05c.html" title="反攻の「航宙日誌」"
+	>　C　</a>
+<a href="re-genesis05d.html" title="ちっちゃなルリの「航宙日誌」"
+	>　D　</a>
+<a href="re-genesis05e.html" title="報復の「航宙日誌」"
+	>　E　</a>
+</div>
+
+<h4 onclick="return apply_effect('story06');" style="text-align:right;" >第六話「運命の選択」</h4>
+<div id="story06" class="partlist" style="text-align:right;">
+<a href="re-genesis06a.html" title="「運命の選択」いまさらか？"
+	>　A　</a>
+<a href="re-genesis06b.html" title="「運命の選択」さぁ、時間だ"
+	>　B　</a>
+<a href="re-genesis06c.html" title="「運命の選択」そんなのかっこつけてます"
+	>　C　</a>
+<a href="re-genesis06d.html" title="「運命の選択」なんて！"
+	>　D　</a>
+<a href="re-genesis06e.html" title="「運命の選択」かもな"
+	>　E　</a>
+<a href="re-genesis06f.html" title="「運命の選択」？ ただの言い訳でしょ"
+	>　F　</a>
+</div>
+
+<h4 onclick="return apply_effect('story07');" style="text-align:left;" >第七話「謳う歌」</h4>
+<div id="story07" class="partlist" style="text-align:left;">
+<a href="re-genesis07a.html" title="赤い大地に「謳う歌」"
+	>　A　</a>
+<a href="re-genesis07b.html" title="僕らの無くした「謳う歌」"
+	>　B　</a>
+<a href="re-genesis07c.html" title="堕ちた天使が「謳う歌」"
+	>　C　</a>
+<a href="re-genesis07d.html" title="いつかあなたと「謳う歌」"
+	>　D　</a>
+</div>
+</div>
+
+<div id="disastrous">
+<h3 class="chapter">間章：<a href="re-genesis07e00.html" title="予告">最悪の夏</a></h3>
+<div class="partlist" style="text-align:center;">
+<a href="re-genesis07e01.html" title="巨竜の黄昏">　A　</a>　
+<a href="re-genesis07e02.html" title="混迷の戦場">　B　</a>　
+<a href="re-genesis07e03.html" title="虚空の劫炎">　C　</a>　
+<a href="re-genesis07e04.html" title="蹉跌の大地">　D　</a>　
+<a href="re-genesis07e05.html" title="死線の先へ">　E　</a>
+</div>
+</div>
+
+<div id="the2nd">
+<h3 class="chapter">第二部：安らかに眠れ</h3>
+</div>
+<div id="the3rd">
+<h3 class="chapter">第三部：遠き帰り路</h3>
+</div>
+<div id="the4th">
+<h3 class="chapter">第四部：帰郷</h3>
+</div>
+</div>
+  </td>
+</tr>
+<tr>
+  <td align="right" valign="middle" class="toc">
+<a href="#" onclick="select_view('prologue'); return false;" title="喪失" >prologue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><br>
+<a href="#" onclick="select_view('the1st'); return false;" title="故郷と呼べる場所" >homecoming: 1st</a><br>
+<a href="#" onclick="select_view('disastrous'); return false;" title="最悪の夏" > a disastrous summer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><br>
+<a href="#" onclick="select_view('the2nd'); return false;" title="安らかに眠れ" >sleep in peace: 2nd</a><br>
+<a href="#" onclick="select_view('the3rd'); return false;" title="遠き帰り路" >long way home: 3rd</a><br>
+<a href="#" onclick="select_view('the4th'); return false;" title="帰郷" >going home: 4th</a><br>
+<br />
+<a href="regen_tl.html" title="時系列" >timeline</a><br>
+<a href="ww_regenesis.html" title="なぜなにリジェネシス" >FAQ</a><br>
+<a href="re-genesis_lexicon.html" title="用語集" >technical word</a><br>
+<a href="regenesis_1.lzh" title="プロローグから第７話まで" >archives</a><br>
+<a href="/vene/documents.html" title="戻る" >back</a><br>
+  </td>
+</tr>
+</table>
+<div class="footer" title="機動戦艦ナデシコ：二次小説">M<span style="font-size:smaller;">ARTIAN</span> S<span style="font-size:smaller;">UCCESSOR</span> NADESICO : Secondary production</div>
+<hr />
+<div class="lastletter">descripted by うぇねふぃくす</div>
+</body>
+</html>
