@@ -38,7 +38,7 @@
         <li><span class="secnum"><a href="#sec-ecmascript-overview">4.2</a></span> ECMAScript 概説
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-objects">4.2.1</a></span> 目的</li>
-            <li><span class="secnum"><a href="#sec-strict-variant-of-ecmascript">4.2.2</a></span> The Strict Variant of ECMAScript</li>
+            <li><span class="secnum"><a href="#sec-strict-variant-of-ecmascript">4.2.2</a></span>ECMAScript の厳密な異体</li>
           </ol>
         </li>
         <li><span class="secnum"><a href="#sec-terms-and-definitions">4.3</a></span> 用語と定義
@@ -88,10 +88,9 @@
         <li><span class="secnum"><a href="#sec-syntactic-and-lexical-grammars">5.1</a></span> 構文的・語彙的文法
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-context-free-grammars">5.1.1</a></span> Context-Free Grammars</li>
-            <li><span class="secnum"><a href="#sec-lexical-and-regexp-grammars">5.1.2</a></span> The Lexical and RegExp
-                Grammars</li>
-            <li><span class="secnum"><a href="#sec-numeric-string-grammar">5.1.3</a></span> The Numeric String Grammar</li>
-            <li><span class="secnum"><a href="#sec-syntactic-grammar">5.1.4</a></span> The Syntactic Grammar</li>
+            <li><span class="secnum"><a href="#sec-lexical-and-regexp-grammars">5.1.2</a></span> 語彙的な正規表現文法</li>
+            <li><span class="secnum"><a href="#sec-numeric-string-grammar">5.1.3</a></span> 数値文字列文法</li>
+            <li><span class="secnum"><a href="#sec-syntactic-grammar">5.1.4</a></span> 構文文法</li>
             <li><span class="secnum"><a href="#sec-grammar-notation">5.1.5</a></span> 文法記法</li>
           </ol>
         </li>
@@ -99,103 +98,92 @@
         <li><span class="secnum"><a href="#sec-static-semantic-rules">5.3</a></span> 静的意味論規約</li>
       </ol>
     </li>
-    <li><span class="secnum"><a href="#sec-ecmascript-data-types-and-values">6</a></span> ECMAScript Data Types and Values
+    <li><span class="secnum"><a href="#sec-ecmascript-data-types-and-values">6</a></span> ECMAScript データ型と値
       <ol class="toc">
-        <li><span class="secnum"><a href="#sec-ecmascript-language-types">6.1</a></span> ECMAScript Language Types
+        <li><span class="secnum"><a href="#sec-ecmascript-language-types">6.1</a></span> ECMAScript 言語型
           <ol class="toc">
-            <li><span class="secnum"><a href="#sec-ecmascript-language-types-undefined-type">6.1.1</a></span> The Undefined
-                Type</li>
-            <li><span class="secnum"><a href="#sec-ecmascript-language-types-null-type">6.1.2</a></span> The Null Type</li>
-            <li><span class="secnum"><a href="#sec-ecmascript-language-types-boolean-type">6.1.3</a></span> The Boolean Type</li>
-            <li><span class="secnum"><a href="#sec-ecmascript-language-types-string-type">6.1.4</a></span> The String Type</li>
-            <li><span class="secnum"><a href="#sec-ecmascript-language-types-symbol-type">6.1.5</a></span> The Symbol Type</li>
-            <li><span class="secnum"><a href="#sec-ecmascript-language-types-number-type">6.1.6</a></span> The Number Type</li>
-            <li><span class="secnum"><a href="#sec-object-type">6.1.7</a></span> The Object Type</li>
+            <li><span class="secnum"><a href="#sec-ecmascript-language-types-undefined-type">6.1.1</a></span> 不定（Undefined）型</li>
+            <li><span class="secnum"><a href="#sec-ecmascript-language-types-null-type">6.1.2</a></span> ヌル（Null）型</li>
+            <li><span class="secnum"><a href="#sec-ecmascript-language-types-boolean-type">6.1.3</a></span> 真偽（Boolean）型</li>
+            <li><span class="secnum"><a href="#sec-ecmascript-language-types-string-type">6.1.4</a></span> 文字列（String）型</li>
+            <li><span class="secnum"><a href="#sec-ecmascript-language-types-symbol-type">6.1.5</a></span> シンボル（Symbol）型</li>
+            <li><span class="secnum"><a href="#sec-ecmascript-language-types-number-type">6.1.6</a></span> 数値（Number）型</li>
+            <li><span class="secnum"><a href="#sec-object-type">6.1.7</a></span> オブジェクト（Object）型</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-ecmascript-specification-types">6.2</a></span> ECMAScript Specification Types
+        <li><span class="secnum"><a href="#sec-ecmascript-specification-types">6.2</a></span> ECMAScript 仕様規定型
           <ol class="toc">
-            <li><span class="secnum"><a href="#sec-list-and-record-specification-type">6.2.1</a></span> The List and Record
-                Specification Type</li>
-            <li><span class="secnum"><a href="#sec-completion-record-specification-type">6.2.2</a></span> The Completion Record
-                Specification Type</li>
-            <li><span class="secnum"><a href="#sec-reference-specification-type">6.2.3</a></span> The Reference Specification
-                Type</li>
-            <li><span class="secnum"><a href="#sec-property-descriptor-specification-type">6.2.4</a></span> The Property
-                Descriptor Specification Type</li>
-            <li><span class="secnum"><a
-                href="#sec-lexical-environment-and-environment-record-specification-types">6.2.5</a></span> The Lexical
-                Environment and Environment Record Specification Types</li>
-            <li><span class="secnum"><a href="#sec-data-blocks">6.2.6</a></span> Data Blocks</li>
+            <li><span class="secnum"><a href="#sec-list-and-record-specification-type">6.2.1</a></span> リスト（List）とレコード（Record）仕様規定型</li>
+            <li><span class="secnum"><a href="#sec-completion-record-specification-type">6.2.2</a></span> 完成レコード（Completion Record）仕様規定型</li>
+            <li><span class="secnum"><a href="#sec-reference-specification-type">6.2.3</a></span> 参照（Reference）仕様規定型</li>
+            <li><span class="secnum"><a href="#sec-property-descriptor-specification-type">6.2.4</a></span> プロパティ記述子（Property Descriptor）仕様規定型</li>
+            <li><span class="secnum"><a href="#sec-lexical-environment-and-environment-record-specification-types">6.2.5</a></span> 語彙的環境変数（Lexical Environment）と環境変数レコード（Environment Record）仕様規定型</li>
+            <li><span class="secnum"><a href="#sec-data-blocks">6.2.6</a></span> データブロック</li>
           </ol>
         </li>
       </ol>
     </li>
-    <li><span class="secnum"><a href="#sec-abstract-operations">7</a></span> Abstract Operations
+    <li><span class="secnum"><a href="#sec-abstract-operations">7</a></span> 抽象演算子（Abstract Operations）
       <ol class="toc">
-        <li><span class="secnum"><a href="#sec-type-conversion">7.1</a></span> Type Conversion
+        <li><span class="secnum"><a href="#sec-type-conversion">7.1</a></span> 型変換
           <ol class="toc">
-            <li><span class="secnum"><a href="#sec-toprimitive">7.1.1</a></span> ToPrimitive ( input [, PreferredType] )</li>
-            <li><span class="secnum"><a href="#sec-toboolean">7.1.2</a></span> ToBoolean ( argument )</li>
-            <li><span class="secnum"><a href="#sec-tonumber">7.1.3</a></span> ToNumber ( argument )</li>
-            <li><span class="secnum"><a href="#sec-tointeger">7.1.4</a></span> ToInteger ( argument )</li>
-            <li><span class="secnum"><a href="#sec-toint32">7.1.5</a></span> ToInt32 ( argument )</li>
-            <li><span class="secnum"><a href="#sec-touint32">7.1.6</a></span> ToUint32 ( argument )</li>
-            <li><span class="secnum"><a href="#sec-toint16">7.1.7</a></span> ToInt16 ( argument )</li>
-            <li><span class="secnum"><a href="#sec-touint16">7.1.8</a></span> ToUint16 ( argument )</li>
-            <li><span class="secnum"><a href="#sec-toint8">7.1.9</a></span> ToInt8 ( argument )</li>
-            <li><span class="secnum"><a href="#sec-touint8">7.1.10</a></span> ToUint8 ( argument )</li>
-            <li><span class="secnum"><a href="#sec-touint8clamp">7.1.11</a></span> ToUint8Clamp ( argument )</li>
-            <li><span class="secnum"><a href="#sec-tostring">7.1.12</a></span> ToString ( argument )</li>
-            <li><span class="secnum"><a href="#sec-toobject">7.1.13</a></span> ToObject ( argument )</li>
-            <li><span class="secnum"><a href="#sec-topropertykey">7.1.14</a></span> ToPropertyKey ( argument )</li>
-            <li><span class="secnum"><a href="#sec-tolength">7.1.15</a></span> ToLength ( argument )</li>
-            <li><span class="secnum"><a href="#sec-canonicalnumericindexstring">7.1.16</a></span> CanonicalNumericIndexString (
-                argument )</li>
+            <li><span class="secnum"><a href="#sec-toprimitive">7.1.1</a></span> ToPrimitive ( 入力 [, 適切な型] )</li>
+            <li><span class="secnum"><a href="#sec-toboolean">7.1.2</a></span> ToBoolean ( 引数 )</li>
+            <li><span class="secnum"><a href="#sec-tonumber">7.1.3</a></span> ToNumber ( 引数 )</li>
+            <li><span class="secnum"><a href="#sec-tointeger">7.1.4</a></span> ToInteger ( 引数 )</li>
+            <li><span class="secnum"><a href="#sec-toint32">7.1.5</a></span> ToInt32 ( 引数 )</li>
+            <li><span class="secnum"><a href="#sec-touint32">7.1.6</a></span> ToUint32 ( 引数 )</li>
+            <li><span class="secnum"><a href="#sec-toint16">7.1.7</a></span> ToInt16 ( 引数 )</li>
+            <li><span class="secnum"><a href="#sec-touint16">7.1.8</a></span> ToUint16 ( 引数 )</li>
+            <li><span class="secnum"><a href="#sec-toint8">7.1.9</a></span> ToInt8 ( 引数 )</li>
+            <li><span class="secnum"><a href="#sec-touint8">7.1.10</a></span> ToUint8 ( 引数 )</li>
+            <li><span class="secnum"><a href="#sec-touint8clamp">7.1.11</a></span> ToUint8Clamp ( 引数 )</li>
+            <li><span class="secnum"><a href="#sec-tostring">7.1.12</a></span> ToString ( 引数 )</li>
+            <li><span class="secnum"><a href="#sec-toobject">7.1.13</a></span> ToObject ( 引数 )</li>
+            <li><span class="secnum"><a href="#sec-topropertykey">7.1.14</a></span> ToPropertyKey ( 引数 )</li>
+            <li><span class="secnum"><a href="#sec-tolength">7.1.15</a></span> ToLength ( 引数 )</li>
+            <li><span class="secnum"><a href="#sec-canonicalnumericindexstring">7.1.16</a></span> CanonicalNumericIndexString ( 引数 )</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-testing-and-comparison-operations">7.2</a></span> Testing and Comparison Operations
+        <li><span class="secnum"><a href="#sec-testing-and-comparison-operations">7.2</a></span> 検証と比較演算子
           <ol class="toc">
-            <li><span class="secnum"><a href="#sec-requireobjectcoercible">7.2.1</a></span> RequireObjectCoercible ( argument
-                )</li>
-            <li><span class="secnum"><a href="#sec-isarray">7.2.2</a></span> IsArray ( argument )</li>
-            <li><span class="secnum"><a href="#sec-iscallable">7.2.3</a></span> IsCallable ( argument )</li>
-            <li><span class="secnum"><a href="#sec-isconstructor">7.2.4</a></span> IsConstructor ( argument )</li>
+            <li><span class="secnum"><a href="#sec-requireobjectcoercible">7.2.1</a></span> RequireObjectCoercible ( 引数 )</li>
+            <li><span class="secnum"><a href="#sec-isarray">7.2.2</a></span> IsArray ( 引数 )</li>
+            <li><span class="secnum"><a href="#sec-iscallable">7.2.3</a></span> IsCallable ( 引数 )</li>
+            <li><span class="secnum"><a href="#sec-isconstructor">7.2.4</a></span> IsConstructor ( 引数 )</li>
             <li><span class="secnum"><a href="#sec-isextensible-o">7.2.5</a></span> IsExtensible (O)</li>
-            <li><span class="secnum"><a href="#sec-isinteger">7.2.6</a></span> IsInteger ( argument )</li>
-            <li><span class="secnum"><a href="#sec-ispropertykey">7.2.7</a></span> IsPropertyKey ( argument )</li>
-            <li><span class="secnum"><a href="#sec-isregexp">7.2.8</a></span> IsRegExp ( argument )</li>
+            <li><span class="secnum"><a href="#sec-isinteger">7.2.6</a></span> IsInteger ( 引数 )</li>
+            <li><span class="secnum"><a href="#sec-ispropertykey">7.2.7</a></span> IsPropertyKey ( 引数 )</li>
+            <li><span class="secnum"><a href="#sec-isregexp">7.2.8</a></span> IsRegExp ( 引数 )</li>
             <li><span class="secnum"><a href="#sec-samevalue">7.2.9</a></span> SameValue(x, y)</li>
             <li><span class="secnum"><a href="#sec-samevaluezero">7.2.10</a></span> SameValueZero(x, y)</li>
             <li><span class="secnum"><a href="#sec-abstract-relational-comparison">7.2.11</a></span> Abstract Relational
                 Comparison</li>
             <li><span class="secnum"><a href="#sec-abstract-equality-comparison">7.2.12</a></span> Abstract Equality
                 Comparison</li>
-            <li><span class="secnum"><a href="#sec-strict-equality-comparison">7.2.13</a></span> Strict Equality Comparison</li>
+            <li><span class="secnum"><a href="#sec-strict-equality-comparison">7.2.13</a></span> 厳密等価性比較</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-operations-on-objects">7.3</a></span> Operations on Objects
+        <li><span class="secnum"><a href="#sec-operations-on-objects">7.3</a></span> オブジェクトの演算子
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-get-o-p">7.3.1</a></span> Get (O, P)</li>
             <li><span class="secnum"><a href="#sec-getv">7.3.2</a></span> GetV (V, P)</li>
             <li><span class="secnum"><a href="#sec-set-o-p-v-throw">7.3.3</a></span> Set (O, P, V, Throw)</li>
             <li><span class="secnum"><a href="#sec-createdataproperty">7.3.4</a></span> CreateDataProperty (O, P, V)</li>
             <li><span class="secnum"><a href="#sec-createmethodproperty">7.3.5</a></span> CreateMethodProperty (O, P, V)</li>
-            <li><span class="secnum"><a href="#sec-createdatapropertyorthrow">7.3.6</a></span> CreateDataPropertyOrThrow (O, P,
-                V)</li>
+            <li><span class="secnum"><a href="#sec-createdatapropertyorthrow">7.3.6</a></span> CreateDataPropertyOrThrow (O, P, V)</li>
             <li><span class="secnum"><a href="#sec-definepropertyorthrow">7.3.7</a></span> DefinePropertyOrThrow (O, P, desc)</li>
             <li><span class="secnum"><a href="#sec-deletepropertyorthrow">7.3.8</a></span> DeletePropertyOrThrow (O, P)</li>
             <li><span class="secnum"><a href="#sec-getmethod">7.3.9</a></span> GetMethod (O, P)</li>
             <li><span class="secnum"><a href="#sec-hasproperty">7.3.10</a></span> HasProperty (O, P)</li>
             <li><span class="secnum"><a href="#sec-hasownproperty">7.3.11</a></span> HasOwnProperty (O, P)</li>
-            <li><span class="secnum"><a href="#sec-call">7.3.12</a></span> Call(F, V, [argumentsList])</li>
-            <li><span class="secnum"><a href="#sec-construct">7.3.13</a></span> Construct (F, [argumentsList], [newTarget])</li>
+            <li><span class="secnum"><a href="#sec-call">7.3.12</a></span> Call(F, V, [引数リスト])</li>
+            <li><span class="secnum"><a href="#sec-construct">7.3.13</a></span> Construct (F, [引数リスト], [newTarget])</li>
             <li><span class="secnum"><a href="#sec-setintegritylevel">7.3.14</a></span> SetIntegrityLevel (O, level)</li>
             <li><span class="secnum"><a href="#sec-testintegritylevel">7.3.15</a></span> TestIntegrityLevel (O, level)</li>
             <li><span class="secnum"><a href="#sec-createarrayfromlist">7.3.16</a></span> CreateArrayFromList (elements)</li>
-            <li><span class="secnum"><a href="#sec-createlistfromarraylike">7.3.17</a></span> CreateListFromArrayLike (obj [,
-                elementTypes] )</li>
-            <li><span class="secnum"><a href="#sec-invoke">7.3.18</a></span> Invoke(O,P, [argumentsList])</li>
+            <li><span class="secnum"><a href="#sec-createlistfromarraylike">7.3.17</a></span> CreateListFromArrayLike (obj [,elementTypes] )</li>
+            <li><span class="secnum"><a href="#sec-invoke">7.3.18</a></span> Invoke(O,P, [引数リスト])</li>
             <li><span class="secnum"><a href="#sec-ordinaryhasinstance">7.3.19</a></span> OrdinaryHasInstance (C, O)</li>
             <li><span class="secnum"><a href="#sec-speciesconstructor">7.3.20</a></span> SpeciesConstructor ( O,
                 defaultConstructor )</li>
@@ -218,14 +206,12 @@
         </li>
       </ol>
     </li>
-    <li><span class="secnum"><a href="#sec-executable-code-and-execution-contexts">8</a></span> Executable Code and Execution
-        Contexts
+    <li><span class="secnum"><a href="#sec-executable-code-and-execution-contexts">8</a></span> Executable Code and Execution Contexts
       <ol class="toc">
         <li><span class="secnum"><a href="#sec-lexical-environments">8.1</a></span> Lexical Environments
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-environment-records">8.1.1</a></span> Environment Records</li>
-            <li><span class="secnum"><a href="#sec-lexical-environment-operations">8.1.2</a></span> Lexical Environment
-                Operations</li>
+            <li><span class="secnum"><a href="#sec-lexical-environment-operations">8.1.2</a></span> Lexical Environment Operations</li>
           </ol>
         </li>
         <li><span class="secnum"><a href="#sec-code-realms">8.2</a></span> Code Realms
@@ -255,17 +241,14 @@
         </li>
         <li><span class="secnum"><a href="#sec-ecmascript-initialization">8.5</a></span> ECMAScript Initialization()
           <ol class="toc">
-            <li><span class="secnum"><a href="#sec-initializehostdefinedrealm">8.5.1</a></span> InitializeHostDefinedRealm ( realm
-                )</li>
+            <li><span class="secnum"><a href="#sec-initializehostdefinedrealm">8.5.1</a></span> InitializeHostDefinedRealm ( realm )</li>
           </ol>
         </li>
       </ol>
     </li>
-    <li><span class="secnum"><a href="#sec-ordinary-and-exotic-objects-behaviours">9</a></span> Ordinary and Exotic Objects
-        Behaviours
+    <li><span class="secnum"><a href="#sec-ordinary-and-exotic-objects-behaviours">9</a></span> 普通のオブジェクトと特異なオブジェクトの振舞
       <ol class="toc">
-        <li><span class="secnum"><a href="#sec-ordinary-object-internal-methods-and-internal-slots">9.1</a></span> Ordinary Object
-            Internal Methods and Internal Slots
+        <li><span class="secnum"><a href="#sec-ordinary-object-internal-methods-and-internal-slots">9.1</a></span> 普通のオブジェクトの内部メソッドと内部スロット
           <ol class="toc">
             <li><span class="secnum"><a
                 href="#sec-ordinary-object-internal-methods-and-internal-slots-getprototypeof">9.1.1</a></span> [[GetPrototypeOf]]
@@ -308,7 +291,7 @@
                 constructor, intrinsicDefaultProto )</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-ecmascript-function-objects">9.2</a></span> ECMAScript Function Objects
+        <li><span class="secnum"><a href="#sec-ecmascript-function-objects">9.2</a></span> ECMAScript 関数オブジェクト
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-ecmascript-function-objects-call-thisargument-argumentslist">9.2.1</a></span>
                 [[Call]] ( thisArgument, argumentsList)</li>
@@ -333,7 +316,7 @@
                 FunctionDeclarationInstantiation(func, argumentsList)</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-built-in-function-objects">9.3</a></span> Built-in Function Objects
+        <li><span class="secnum"><a href="#sec-built-in-function-objects">9.3</a></span> 組み込み関数オブジェクト
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-built-in-function-objects-call-thisargument-argumentslist">9.3.1</a></span>
                 [[Call]] ( thisArgument, argumentsList)</li>
@@ -343,8 +326,7 @@
                 prototype, internalSlotsList)</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-built-in-exotic-object-internal-methods-and-slots">9.4</a></span> Built-in Exotic
-            Object Internal Methods and Slots
+        <li><span class="secnum"><a href="#sec-built-in-exotic-object-internal-methods-and-slots">9.4</a></span> 組み込み特異オブジェクト内部のメソッドとスロット
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-bound-function-exotic-objects">9.4.1</a></span> Bound Function Exotic
                 Objects</li>
@@ -404,36 +386,36 @@
         </li>
       </ol>
     </li>
-    <li><span class="secnum"><a href="#sec-ecmascript-language-source-code">10</a></span> ECMAScript Language: Source Code
+    <li><span class="secnum"><a href="#sec-ecmascript-language-source-code">10</a></span> ECMAScript 言語: ソースコード
       <ol class="toc">
-        <li><span class="secnum"><a href="#sec-source-text">10.1</a></span> Source Text
+        <li><span class="secnum"><a href="#sec-source-text">10.1</a></span> ソース文章
           <ol class="toc">
-            <li><span class="secnum"><a href="#sec-utf16encoding">10.1.1</a></span> Static Semantics:  <var>UTF16Encoding ( cp
+            <li><span class="secnum"><a href="#sec-utf16encoding">10.1.1</a></span> 静的構文:  <var>UTF16Encoding ( cp
                 )</var></li>
-            <li><span class="secnum"><a href="#sec-utf16decode">10.1.2</a></span> Static Semantics: UTF16Decode( lead, trail
+            <li><span class="secnum"><a href="#sec-utf16decode">10.1.2</a></span> 静的構文: UTF16Decode( lead, trail
                 )</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-types-of-source-code">10.2</a></span> Types of Source Code
+        <li><span class="secnum"><a href="#sec-types-of-source-code">10.2</a></span> ソースコードの種類
           <ol class="toc">
-            <li><span class="secnum"><a href="#sec-strict-mode-code">10.2.1</a></span> Strict Mode Code</li>
-            <li><span class="secnum"><a href="#sec-non-ecmascript-functions">10.2.2</a></span> Non-ECMAScript Functions</li>
+            <li><span class="secnum"><a href="#sec-strict-mode-code">10.2.1</a></span> Strict Mode コード</li>
+            <li><span class="secnum"><a href="#sec-non-ecmascript-functions">10.2.2</a></span> Non-ECMAScript 関数</li>
           </ol>
         </li>
       </ol>
     </li>
-    <li><span class="secnum"><a href="#sec-ecmascript-language-lexical-grammar">11</a></span> ECMAScript Language: Lexical Grammar
+    <li><span class="secnum"><a href="#sec-ecmascript-language-lexical-grammar">11</a></span> ECMAScript 言語: 語彙的文法
       <ol class="toc">
         <li><span class="secnum"><a href="#sec-unicode-format-control-characters">11.1</a></span> Unicode Format-Control
             Characters</li>
-        <li><span class="secnum"><a href="#sec-white-space">11.2</a></span> White Space</li>
-        <li><span class="secnum"><a href="#sec-line-terminators">11.3</a></span> Line Terminators</li>
-        <li><span class="secnum"><a href="#sec-comments">11.4</a></span> Comments</li>
-        <li><span class="secnum"><a href="#sec-tokens">11.5</a></span> Tokens</li>
-        <li><span class="secnum"><a href="#sec-names-and-keywords">11.6</a></span> Names and Keywords
+        <li><span class="secnum"><a href="#sec-white-space">11.2</a></span> 空白（White Space）</li>
+        <li><span class="secnum"><a href="#sec-line-terminators">11.3</a></span> 行端（Line Terminators）</li>
+        <li><span class="secnum"><a href="#sec-comments">11.4</a></span> コメント</li>
+        <li><span class="secnum"><a href="#sec-tokens">11.5</a></span> トークン（Tokens）</li>
+        <li><span class="secnum"><a href="#sec-names-and-keywords">11.6</a></span> 名称とキーワード
           <ol class="toc">
-            <li><span class="secnum"><a href="#sec-identifier-names">11.6.1</a></span> Identifier Names</li>
-            <li><span class="secnum"><a href="#sec-reserved-words">11.6.2</a></span> Reserved Words</li>
+            <li><span class="secnum"><a href="#sec-identifier-names">11.6.1</a></span> 識別名</li>
+            <li><span class="secnum"><a href="#sec-reserved-words">11.6.2</a></span> 予約語</li>
           </ol>
         </li>
         <li><span class="secnum"><a href="#sec-punctuators">11.7</a></span> Punctuators</li>
@@ -449,19 +431,17 @@
                 Components</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-automatic-semicolon-insertion">11.9</a></span> Automatic Semicolon Insertion
+        <li><span class="secnum"><a href="#sec-automatic-semicolon-insertion">11.9</a></span> 自動セミコロン挿入
           <ol class="toc">
-            <li><span class="secnum"><a href="#sec-rules-of-automatic-semicolon-insertion">11.9.1</a></span> Rules of Automatic
-                Semicolon Insertion</li>
-            <li><span class="secnum"><a href="#sec-examples-of-automatic-semicolon-insertion">11.9.2</a></span> Examples of
-                Automatic Semicolon Insertion</li>
+            <li><span class="secnum"><a href="#sec-rules-of-automatic-semicolon-insertion">11.9.1</a></span> 自動セミコロン挿入の規則</li>
+            <li><span class="secnum"><a href="#sec-examples-of-automatic-semicolon-insertion">11.9.2</a></span> 自動セミコロン挿入の例</li>
           </ol>
         </li>
       </ol>
     </li>
-    <li><span class="secnum"><a href="#sec-ecmascript-language-expressions">12</a></span> ECMAScript Language: Expressions
+    <li><span class="secnum"><a href="#sec-ecmascript-language-expressions">12</a></span> ECMAScript 言語: 式
       <ol class="toc">
-        <li><span class="secnum"><a href="#sec-identifiers">12.1</a></span> Identifiers
+        <li><span class="secnum"><a href="#sec-identifiers">12.1</a></span> 識別子
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-identifiers-static-semantics-early-errors">12.1.1</a></span> Static Semantics:
                 Early Errors</li>
@@ -477,20 +457,18 @@
                 Evaluation</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-primary-expression">12.2</a></span> Primary Expression
+        <li><span class="secnum"><a href="#sec-primary-expression">12.2</a></span> 基礎式
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-primary-expression-semantics">12.2.1</a></span> Semantics</li>
-            <li><span class="secnum"><a href="#sec-this-keyword">12.2.2</a></span> The <code>this</code> Keyword</li>
-            <li><span class="secnum"><a href="#sec-identifier-reference">12.2.3</a></span> Identifier Reference</li>
+            <li><span class="secnum"><a href="#sec-this-keyword">12.2.2</a></span> The <code>this</code> キーワード</li>
+            <li><span class="secnum"><a href="#sec-identifier-reference">12.2.3</a></span> 識別子参照</li>
             <li><span class="secnum"><a href="#sec-primary-expression-literals">12.2.4</a></span> Literals</li>
-            <li><span class="secnum"><a href="#sec-array-initializer">12.2.5</a></span> Array Initializer</li>
-            <li><span class="secnum"><a href="#sec-object-initializer">12.2.6</a></span> Object Initializer</li>
-            <li><span class="secnum"><a href="#sec-function-defining-expressions">12.2.7</a></span> Function Defining
-                Expressions</li>
-            <li><span class="secnum"><a href="#sec-primary-expression-regular-expression-literals">12.2.8</a></span> Regular
-                Expression Literals</li>
-            <li><span class="secnum"><a href="#sec-template-literals">12.2.9</a></span> Template Literals</li>
-            <li><span class="secnum"><a href="#sec-grouping-operator">12.2.10</a></span> The Grouping Operator</li>
+            <li><span class="secnum"><a href="#sec-array-initializer">12.2.5</a></span> Array 初期化子</li>
+            <li><span class="secnum"><a href="#sec-object-initializer">12.2.6</a></span> Object 初期化子</li>
+            <li><span class="secnum"><a href="#sec-function-defining-expressions">12.2.7</a></span> 関数定義式</li>
+            <li><span class="secnum"><a href="#sec-primary-expression-regular-expression-literals">12.2.8</a></span> 正規表現リテラル</li>
+            <li><span class="secnum"><a href="#sec-template-literals">12.2.9</a></span> テンプレート・リテラル</li>
+            <li><span class="secnum"><a href="#sec-grouping-operator">12.2.10</a></span> グループ化演算子</li>
           </ol>
         </li>
         <li><span class="secnum"><a href="#sec-left-hand-side-expressions">12.3</a></span> Left-Hand-Side Expressions
@@ -518,7 +496,7 @@
             <li><span class="secnum"><a href="#sec-postfix-decrement-operator">12.4.5</a></span> Postfix Decrement Operator</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-unary-operators">12.5</a></span> Unary Operators
+        <li><span class="secnum"><a href="#sec-unary-operators">12.5</a></span> 単項演算子
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-unary-operators-static-semantics-early-errors">12.5.1</a></span> Static
                 Semantics:  Early Errors</li>
@@ -552,19 +530,16 @@
                 Runtime Semantics: Evaluation</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-additive-operators">12.7</a></span> Additive Operators
+        <li><span class="secnum"><a href="#sec-additive-operators">12.7</a></span> 加法演算子
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-additive-operators-static-semantics-isfunctiondefinition">12.7.1</a></span>
                 Static Semantics:  IsFunctionDefinition</li>
             <li><span class="secnum"><a
                 href="#sec-additive-operators-static-semantics-isvalidsimpleassignmenttarget">12.7.2</a></span> Static Semantics:
                 IsValidSimpleAssignmentTarget</li>
-            <li><span class="secnum"><a href="#sec-addition-operator-plus">12.7.3</a></span> The Addition operator (
-                <code>+</code> )</li>
-            <li><span class="secnum"><a href="#sec-subtraction-operator-minus">12.7.4</a></span> The Subtraction Operator (
-                <code>-</code> )</li>
-            <li><span class="secnum"><a href="#sec-applying-the-additive-operators-to-numbers">12.7.5</a></span> Applying the
-                Additive Operators to Numbers</li>
+            <li><span class="secnum"><a href="#sec-addition-operator-plus">12.7.3</a></span> 加算演算子 ( <code>+</code> )</li>
+            <li><span class="secnum"><a href="#sec-subtraction-operator-minus">12.7.4</a></span> 減算演算子 ( <code>-</code> )</li>
+            <li><span class="secnum"><a href="#sec-applying-the-additive-operators-to-numbers">12.7.5</a></span> 加法演算子を数値に適用する</li>
           </ol>
         </li>
         <li><span class="secnum"><a href="#sec-bitwise-shift-operators">12.8</a></span> Bitwise Shift Operators
@@ -583,7 +558,7 @@
                 Operator ( <code>&gt;&gt;&gt;</code> )</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-relational-operators">12.9</a></span> Relational Operators
+        <li><span class="secnum"><a href="#sec-relational-operators">12.9</a></span> 関係演算子
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-relational-operators-static-semantics-isfunctiondefinition">12.9.1</a></span>
                 Static Semantics:  IsFunctionDefinition</li>
@@ -596,7 +571,7 @@
                 C)</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-equality-operators">12.10</a></span> Equality Operators
+        <li><span class="secnum"><a href="#sec-equality-operators">12.10</a></span> 等価演算子
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-equality-operators-static-semantics-isfunctiondefinition">12.10.1</a></span>
                 Static Semantics:  IsFunctionDefinition</li>
@@ -631,7 +606,7 @@
                 Runtime Semantics: Evaluation</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-conditional-operator">12.13</a></span> Conditional Operator ( <code>? : )</code>
+        <li><span class="secnum"><a href="#sec-conditional-operator">12.13</a></span> 条件演算子 ( <code>? : )</code>
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-conditional-operator-static-semantics-isfunctiondefinition">12.13.1</a></span>
                 Static Semantics:  IsFunctionDefinition</li>
@@ -642,7 +617,7 @@
                 Semantics: Evaluation</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-assignment-operators">12.14</a></span> Assignment Operators
+        <li><span class="secnum"><a href="#sec-assignment-operators">12.14</a></span> 代入演算子
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-assignment-operators-static-semantics-early-errors">12.14.1</a></span> Static
                 Semantics:  Early Errors</li>
@@ -656,7 +631,7 @@
             <li><span class="secnum"><a href="#sec-destructuring-assignment">12.14.5</a></span> Destructuring Assignment</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-comma-operator">12.15</a></span> Comma Operator ( <code>, )</code>
+        <li><span class="secnum"><a href="#sec-comma-operator">12.15</a></span> コンマ演算子 ( <code>, )</code>
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-comma-operator-static-semantics-isfunctiondefinition">12.15.1</a></span> Static
                 Semantics:  IsFunctionDefinition</li>
@@ -669,10 +644,9 @@
         </li>
       </ol>
     </li>
-    <li><span class="secnum"><a href="#sec-ecmascript-language-statements-and-declarations">13</a></span> ECMAScript Language:
-        Statements and Declarations
+    <li><span class="secnum"><a href="#sec-ecmascript-language-statements-and-declarations">13</a></span> ECMAScript 言語: 文と宣言
       <ol class="toc">
-        <li><span class="secnum"><a href="#sec-statement-semantics">13.1</a></span> Statement Semantics
+        <li><span class="secnum"><a href="#sec-statement-semantics">13.1</a></span> 文
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-statement-semantics-static-semantics-containsduplicatelabels">13.1.1</a></span>
                 Static Semantics: ContainsDuplicateLabels</li>
@@ -694,7 +668,7 @@
                 Semantics: Evaluation</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-block">13.2</a></span> Block
+        <li><span class="secnum"><a href="#sec-block">13.2</a></span> ブロック
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-block-static-semantics-early-errors">13.2.1</a></span> Static Semantics:  Early
                 Errors</li>
@@ -726,8 +700,7 @@
                 BlockDeclarationInstantiation( code, env )</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-declarations-and-the-variable-statement">13.3</a></span> Declarations and the
-            Variable Statement
+        <li><span class="secnum"><a href="#sec-declarations-and-the-variable-statement">13.3</a></span> 宣言と変数文
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-let-and-const-declarations">13.3.1</a></span> Let and Const Declarations</li>
             <li><span class="secnum"><a href="#sec-variable-statement">13.3.2</a></span> Variable Statement</li>
@@ -747,7 +720,7 @@
                 Semantics: Evaluation</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-if-statement">13.6</a></span> The <code>if</code> Statement
+        <li><span class="secnum"><a href="#sec-if-statement">13.6</a></span> <code>if</code> 文
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-if-statement-static-semantics-early-errors">13.6.1</a></span> Static Semantics:
                 Early Errors</li>
@@ -766,7 +739,7 @@
                 Evaluation</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-iteration-statements">13.7</a></span> Iteration Statements
+        <li><span class="secnum"><a href="#sec-iteration-statements">13.7</a></span> 反復（Iteration）文
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-iteration-statements-semantics">13.7.1</a></span> Semantics</li>
             <li><span class="secnum"><a href="#sec-do-while-statement">13.7.2</a></span> The <code>do</code>-<code>while</code>
@@ -777,7 +750,7 @@
                 <code>for</code>-<code>in</code> and <code>for</code>-<code>of</code> Statements</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-continue-statement">13.8</a></span> The <code>continue</code> Statement
+        <li><span class="secnum"><a href="#sec-continue-statement">13.8</a></span> <code>continue</code> 文
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-continue-statement-static-semantics-early-errors">13.8.1</a></span> Static
                 Semantics:  Early Errors</li>
@@ -788,7 +761,7 @@
                 Semantics: Evaluation</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-break-statement">13.9</a></span> The <code>break</code> Statement
+        <li><span class="secnum"><a href="#sec-break-statement">13.9</a></span> <code>break</code> 文
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-break-statement-static-semantics-early-errors">13.9.1</a></span> Static
                 Semantics:  Early Errors</li>
@@ -799,13 +772,13 @@
                 Semantics: Evaluation</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-return-statement">13.10</a></span> The <code>return</code> Statement
+        <li><span class="secnum"><a href="#sec-return-statement">13.10</a></span> <code>return</code> 文
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-return-statement-runtime-semantics-evaluation">13.10.1</a></span> Runtime
                 Semantics: Evaluation</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-with-statement">13.11</a></span> The <code>with</code> Statement
+        <li><span class="secnum"><a href="#sec-with-statement">13.11</a></span> <code>with</code> 文
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-with-statement-static-semantics-early-errors">13.11.1</a></span> Static
                 Semantics:  Early Errors</li>
@@ -825,7 +798,7 @@
                 Semantics: Evaluation</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-switch-statement">13.12</a></span> The <code>switch</code> Statement
+        <li><span class="secnum"><a href="#sec-switch-statement">13.12</a></span> <code>switch</code> 文
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-switch-statement-static-semantics-early-errors">13.12.1</a></span> Static
                 Semantics:  Early Errors</li>
@@ -896,13 +869,13 @@
                 Semantics: Evaluation</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-throw-statement">13.14</a></span> The <code>throw</code> Statement
+        <li><span class="secnum"><a href="#sec-throw-statement">13.14</a></span> <code>throw</code> 文
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-throw-statement-runtime-semantics-evaluation">13.14.1</a></span> Runtime
                 Semantics: Evaluation</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-try-statement">13.15</a></span> The <code>try</code> Statement
+        <li><span class="secnum"><a href="#sec-try-statement">13.15</a></span> <code>try</code> 文
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-try-statement-static-semantics-early-errors">13.15.1</a></span> Static
                 Semantics:  Early Errors</li>
@@ -923,7 +896,7 @@
                 Semantics: Evaluation</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-debugger-statement">13.16</a></span> The <code>debugger</code> statement
+        <li><span class="secnum"><a href="#sec-debugger-statement">13.16</a></span> <code>debugger</code> 文
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-debugger-statement-runtime-semantics-evaluation">13.16.1</a></span> Runtime
                 Semantics: Evaluation</li>
@@ -931,10 +904,9 @@
         </li>
       </ol>
     </li>
-    <li><span class="secnum"><a href="#sec-ecmascript-language-functions-and-classes">14</a></span> ECMAScript Language: Functions
-        and Classes
+    <li><span class="secnum"><a href="#sec-ecmascript-language-functions-and-classes">14</a></span> ECMAScript 言語: 関数とクラス
       <ol class="toc">
-        <li><span class="secnum"><a href="#sec-function-definitions">14.1</a></span> Function Definitions
+        <li><span class="secnum"><a href="#sec-function-definitions">14.1</a></span> 関数定義
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-directive-prologues-and-the-use-strict-directive">14.1.1</a></span> Directive
                 Prologues and the Use Strict Directive</li>
@@ -982,7 +954,7 @@
                 Semantics: Evaluation</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-arrow-function-definitions">14.2</a></span> Arrow Function Definitions
+        <li><span class="secnum"><a href="#sec-arrow-function-definitions">14.2</a></span> 矢印（Arrow）関数定義
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-arrow-function-definitions-static-semantics-early-errors">14.2.1</a></span>
                 Static Semantics:  Early Errors</li>
@@ -1026,7 +998,7 @@
                 Runtime Semantics: Evaluation</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-method-definitions">14.3</a></span> Method Definitions
+        <li><span class="secnum"><a href="#sec-method-definitions">14.3</a></span> メソッド定義
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-method-definitions-static-semantics-early-errors">14.3.1</a></span> Static
                 Semantics:  Early Errors</li>
@@ -1049,7 +1021,7 @@
                 PropertyDefinitionEvaluation</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-generator-function-definitions">14.4</a></span> Generator Function Definitions
+        <li><span class="secnum"><a href="#sec-generator-function-definitions">14.4</a></span> 生成子（Generator）関数定義
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-generator-function-definitions-static-semantics-early-errors">14.4.1</a></span>
                 Static Semantics:  Early Errors</li>
@@ -1089,7 +1061,7 @@
                 Runtime Semantics: Evaluation</li>
           </ol>
         </li>
-        <li><span class="secnum"><a href="#sec-class-definitions">14.5</a></span> Class Definitions
+        <li><span class="secnum"><a href="#sec-class-definitions">14.5</a></span> クラス定義
           <ol class="toc">
             <li><span class="secnum"><a href="#sec-class-definitions-static-semantics-early-errors">14.5.1</a></span> Static
                 Semantics:  Early Errors</li>
